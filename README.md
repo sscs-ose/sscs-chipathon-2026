@@ -63,8 +63,8 @@ main ones would be:
      - [2026-track-d-ai-llm-for-circuits](https://discord.com/channels/1479523294205186282/1479848059444920522)
 
 
-2. **Announcements **
-   - For broader discussions about:
+2. **Announcements**
+   - For discussions about:
      - Schedule updates and announcements
      - Team formation
      - Event-specific questions
