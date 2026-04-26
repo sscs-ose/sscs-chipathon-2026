@@ -1,10 +1,14 @@
-# SSCS Chipathon 2025: Blocks & Bots
+# SSCS Chipathon 2026: “Build It. Test It. Publish It.”
 
-Welcome to the IEEE SSCS Chipathon 2025 repository!<br>This event focuses on "Blocks & Bots: An Open Chip Playground augmented with LLMs."<br>We encourage you to `Watch` this repo for the latest updates.
+Welcome to the IEEE SSCS Chipathon 2026 repository!
+
+This year’s program emphasizes not only open-source design and tapeout, but also reproducible results, measurement, and dissemination through a dedicated workshop and publication opportunities. Build from your repo, test your chip, and publish the results!
+
+We encourage you to `Watch` this repo for the latest updates.
 
 ## About the Event
 
-The SSCS Chipathon 2025 is an exciting opportunity for participants to explore chip design. For more information, please visit the [official SSCS page](https://sscs.ieee.org/technical-committees/tc-ose/sscs-pico-design-contest/).
+The SSCS Chipathon 2026 is an exciting opportunity for participants to explore chip design. For more information, please visit the [official SSCS page](https://sscs.ieee.org/technical-committees/tc-ose/sscs-pico-design-contest/).
 
 ## Structure of This Repository
 
@@ -26,41 +30,53 @@ The SSCS Chipathon 2025 is an exciting opportunity for participants to explore c
 - [Participation Guidelines](docs/guidelines.md)
 - [Resources](resources/README.md)
 
-## Collaboration Space in Element (Matrix)
+## Collaboration Space in Discord
 
-We use Element (a Matrix client) for all communications.
+This year we will use Discord for all communications.
 
-### Element Matrix Chat Channels
+### Discord Chipathon server
 
-#### Getting Started with Element
+#### Getting Started with Discord
 
-1. Visit [element.fossi-chat.org](https://element.fossi-chat.org/)
+1. Visit [discord.com](https://discord.com/)
 2. Create an account or sign in
-3. Join both the chipathon-specific channel and the general chat (see below)
+3. Join Chipathon Discord server [Join_server](https://discord.gg/tvZcQzvt7q) 
 4. Introduce yourself to the community!
 
 #### Channels
 
-There are two main channels:
+Inside the discord server we have several channels organized in categories. The
+main ones would be:
 
-1. **Chipathon 2025 Channel**
-   - Specific to this event: [#chipathon-2025:fossi-chat.org](https://matrix.to/#/#chipathon-2025:fossi-chat.org)
+1. **Main channel**
    - For discussions about:
-     - Event-specific questions
-     - Team collaboration
+     - General information regarding the event
      - Technical support related to the chipathon
-     - Schedule updates and announcements
+     - Track specific related questions
+     - Collaboration between teams
 
-2. **General FOSSi Chat**
-   - Open-source community: [element.fossi-chat.org](https://element.fossi-chat.org/)
+   - Channels:
+     - [general](https://discord.com/channels/1479523294205186282/1479523296117522578)
+     - [2026-track-a-foundational-building](https://discord.com/channels/1479523294205186282/1479847722604302458)
+     - [2026-track-b-circuits-for-sensors](https://discord.com/channels/1479523294205186282/1479847807748800584)
+     - [2026-track-c-mosbius-playground](https://discord.com/channels/1479523294205186282/1479847987009028167)
+     - [2026-track-d-ai-llm-for-circuits](https://discord.com/channels/1479523294205186282/1479848059444920522)
+
+
+2. **Announcements **
    - For broader discussions about:
-     - Open-source silicon
-     - General chip design
-     - Community engagement
-     - Industry news and updates
+     - Schedule updates and announcements
+     - Team formation
+     - Event-specific questions
 
+
+   - Channels:
+     - chipathon-deadlines
+     - chipathon-teams
+     - chipathon-announcements
+         
 ## Teams
-We encourage participation in teams of up to about 5 people. You can view the [current teams here](https://docs.google.com/spreadsheets/d/1-4hL9yIN_m4WoPQepvqVlJ4-bEUh6FnOtUP1uCXJMR4/) (updated weekly).
+We encourage participation in teams of up to about 5 people. You can view the [current teams here]() (updated weekly).
 
 ## Important Dates
 
@@ -70,7 +86,7 @@ Please refer to the [detailed schedule](schedule/README.md) for the complete tim
 
 For questions and support:
 
-1. Join our Matrix chat channels (preferred method)
+1. Join our Discord server and ask in the respective channel (preferred).
 2. [Open an issue](../../issues) in this repository
 3. Contact the organizing committee
 
