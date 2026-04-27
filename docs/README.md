@@ -5,6 +5,12 @@
 **Welcome to the IEEE SSCS Chipathon 2026!** <br>
 This guide provides key information for participants. During the Chipathon, you will choose one of the tracks shown below.
 
+- Track A — Foundational Building Blocks
+- Track B — Circuits for Sensors
+- Track C — MOSbius – Playground for Chips
+- Track D — AI / LLM-assisted Circuits
+
+
 We encourage you to follow the steps below:
 
 1. [General IIC-OSIC Tool setup](./install_instructions)
