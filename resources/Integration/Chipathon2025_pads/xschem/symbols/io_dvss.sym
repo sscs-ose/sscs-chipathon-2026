@@ -1,0 +1,26 @@
+v {xschem version=3.4.7 file_version=1.2}
+G {}
+K {type=io
+format="@spiceprefix@name @pinlist @model"
+lvs_format="@spiceprefix@name @pinlist @model"
+template="name=IO1
+model=gf180mcu_fd_io__dvss
+spiceprefix=X
+"
+}
+V {}
+S {}
+E {}
+L 7 80 -160 80 -140 {}
+L 7 120 -160 120 -140 {}
+L 7 80 -20 80 0 {}
+B 5 77.5 -162.5 82.5 -157.5 {name=DVDD dir=inout sim_pinnumber=1}
+B 5 77.5 -2.5 82.5 2.5 {name=DVSS dir=inout
+sim_pinnumber=2}
+B 5 117.5 -162.5 122.5 -157.5 {name=VDD dir=inout sim_pinnumber=3}
+P 4 5 180 -140 20 -140 20 -20 180 -20 180 -140 {}
+T {@symname} 52.5 -96 0 0 0.3 0.3 {}
+T {@name} 135 -152 0 0 0.2 0.2 {}
+T {DVSS} 55 -26 2 1 0.2 0.2 {}
+T {DVDD} 75 -134 0 1 0.2 0.2 {}
+T {VDD} 135 -134 0 1 0.2 0.2 {}
