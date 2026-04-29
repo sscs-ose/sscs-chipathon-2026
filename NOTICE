@@ -1,0 +1,75 @@
+sscs-ose/sscs-chipathon-2026
+Copyright 2026 IEEE SSCS Chipathon contributors
+
+This product includes software contributed by external authors and
+projects. The list below covers the additions under
+`examples/librelane_rtl2gds_gf180/` and
+`resources/Integration/workshop_padring_librelane/`. The earlier
+contents of the repository carry their own attribution; the entries
+below are appended by the LibreLane RTL-to-GDS migration PR.
+
+---
+
+LibreLane RTL-to-GDS examples + workshop padring (LibreLane Chip flow)
+======================================================================
+
+Repository-specific material (Apache-2.0):
+- examples/librelane_rtl2gds_gf180/                (NEW)
+  - 04_counter_alu_multimacro/                     authored 2026-04
+    rtl/{counter,alu,alu_macro,chip_core_multi}.sv,
+    tb/{Makefile,Makefile.cocotb,timescale.v,
+         test_counter.py,test_alu.py,test_alu_macro.py},
+    librelane/{counter_macro,alu_macro,chip_top_multi_patch}.yaml,
+    04_counter_alu_multimacro.ipynb
+  - diagrams/*.svg + *.png                         authored 2026-04
+  - docs/{container_setup,troubleshooting,reading_order}.md
+  - scripts/{bootstrap_container,verify_prereqs}.sh
+  - README.md, CREDITS.md
+  - 00..03 notebooks (adapted from the upstream eda-agents
+    walkthrough tree; differences noted in CREDITS.md).
+
+  Author: Mauricio Montanares <mauricio.xmontanares@gmail.com>
+  Source: https://github.com/Mauricio-xx/chipathon-gf180mcu-librelane-examples
+  Licensed under Apache-2.0.
+
+- resources/Integration/workshop_padring_librelane/  (NEW)
+  Vendored copy of the chipathon-2026 workshop padring fork pinned
+  at commit 4e1a1268ab441a703befe949883ffc1751c84caf. See
+  `UPSTREAM_PIN` in that folder.
+
+Third-party material referenced or vendored
+-------------------------------------------
+
+1. wafer-space / gf180mcu-project-template
+   Copyright 2025 Leo Moser <leo.moser@pm.me> and contributors
+   Licensed under Apache-2.0.
+   Source: https://github.com/wafer-space/gf180mcu-project-template
+
+   The chipathon-2026 padring fork (item 2 below) is a derivation of
+   this upstream template (`8bd0f6ff28947bf222c5288343f8f3ee1fc04632`).
+
+2. Mauricio-xx / chipathon-2026-gf180mcu-padring
+   Copyright 2026 Mauricio Montanares
+   Licensed under Apache-2.0.
+   Source: https://github.com/Mauricio-xx/chipathon-2026-gf180mcu-padring
+   Pad layout derived from JuanMoya/padring_gf180 (see below).
+   Vendored at `resources/Integration/workshop_padring_librelane/`.
+
+3. JuanMoya / padring_gf180
+   Copyright 2025 Juan Moya
+   Licensed under Apache-2.0.
+   Source: https://github.com/JuanMoya/padring_gf180
+   The workshop pad layout exercised by notebooks 00, 03, 04 is a
+   port of `Workshop_CASS/padring/workshop_padring.cfg`.
+
+4. hpretl / iic-osic-tools (Docker image)
+   The Docker image `hpretl/iic-osic-tools:chipathon26` is the
+   runtime used by every walkthrough notebook. The image bundles
+   LibreLane (v3.0.2 in the chipathon26 snapshot), Yosys, OpenROAD,
+   Magic, KLayout, Netgen, Icarus Verilog, cocotb, Verilator, and
+   ciel under their respective open-source licenses.
+   Source: https://github.com/iic-jku/iic-osic-tools
+
+All third-party additions above carry the Apache License, Version 2.0.
+The repository-specific material listed first is also released under
+the same license.

@@ -1,0 +1,395 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 920" font-family="Helvetica,Arial,sans-serif">
+  <title>Chipathon workshop slot - pad map with signal lookup</title>
+  <desc>
+    Top-down view of the chipathon-2026 workshop slot die (2935 x 2935 um).
+    91 I/O cells (60 analog + 20 bidir + 4 DVDD + 4 DVSS + clk_pad +
+    rst_n_pad + inputs[0]) placed on the four edges plus 4 auto corners.
+    Per-pad index numbers (CW from SW) match the four signal-name lookup
+    tables on the right. Bondpad-name convention: analog[i] -> ana(i+1),
+    bidir[i] -> config(i+1).
+  </desc>
+
+  <style>
+    .title     { font-size:20px; fill:#111; text-anchor:middle; font-weight:bold; }
+    .subtitle  { font-size:13px; fill:#444; text-anchor:middle; font-style:italic; }
+    .die       { fill:#fbfbfd; stroke:#003b73; stroke-width:2.5; }
+    .core      { fill:#eefdef; stroke:#156b2e; stroke-width:1.5; stroke-dasharray:6,4; }
+    .pad-num   { font-size:9px; fill:#222; text-anchor:middle; font-family:monospace; }
+    .pad-num-w { font-size:9px; fill:#222; text-anchor:end; font-family:monospace; }
+    .pad-num-e { font-size:9px; fill:#222; text-anchor:start; font-family:monospace; }
+    .edge-label{ font-size:13px; fill:#003b73; font-weight:bold; text-anchor:middle; }
+    .corner    { fill:#555; stroke:#333; stroke-width:1; }
+    .ana       { fill:#c6e2ff; stroke:#003b73; stroke-width:0.6; }
+    .bidir     { fill:#fff3c4; stroke:#b26500; stroke-width:0.6; }
+    .dvdd      { fill:#ffd1d1; stroke:#a00; stroke-width:0.6; }
+    .dvss      { fill:#d6d6d6; stroke:#333; stroke-width:0.6; }
+    .iopad     { fill:#d4f5dd; stroke:#156b2e; stroke-width:0.6; }
+    .legend    { font-size:11px; fill:#222; }
+    .arrow-cw  { fill:none; stroke:#b00; stroke-width:1.6; marker-end:url(#arrowhead-red); }
+    .note      { font-size:11px; fill:#b00; font-weight:bold; }
+
+    .tbl-bg    { fill:#fafafa; stroke:#bbb; stroke-width:1; }
+    .tbl-hdr   { fill:#003b73; stroke:none; }
+    .tbl-hdr-text { font-size:11px; fill:#fff; font-weight:bold; text-anchor:middle; font-family:Helvetica; }
+    .tbl-row-alt { fill:#eef3f8; stroke:none; }
+    .tbl-idx   { font-size:9.5px; fill:#222; text-anchor:end; font-family:monospace; }
+    .tbl-name  { font-size:9.5px; fill:#222; text-anchor:start; font-family:monospace; }
+    .tbl-bond  { font-size:9px; fill:#666; text-anchor:start; font-family:monospace; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L0,10 L9,5 z" fill="#b00"/>
+    </marker>
+  </defs>
+
+  <!-- ============================================================ -->
+  <!-- HEADER                                                        -->
+  <!-- ============================================================ -->
+  <text class="title"    x="640" y="28">Workshop slot - pad map (91 I/O cells + 4 corners)</text>
+  <text class="subtitle" x="640" y="48">2935 x 2935 um die, CW reading order from SW corner; signal lookup tables on the right</text>
+
+  <!-- ============================================================ -->
+  <!-- LEFT HALF: die diagram                                        -->
+  <!-- ============================================================ -->
+
+  <!-- die outline -->
+  <rect class="die"  x="100" y="90" width="600" height="600" rx="3"/>
+  <!-- core area -->
+  <rect class="core" x="165" y="155" width="470" height="470" rx="3"/>
+  <text x="400" y="395" font-size="13" fill="#156b2e" text-anchor="middle" font-weight="bold">CORE</text>
+  <text x="400" y="412" font-size="10" fill="#156b2e" text-anchor="middle">[442 .. 2493] x [442 .. 2493] um</text>
+  <text x="400" y="427" font-size="10" fill="#156b2e" text-anchor="middle">2051 x 2051 um</text>
+  <text x="400" y="445" font-size="9" fill="#156b2e" text-anchor="middle" font-style="italic">
+    chip_core + chip_id + wafer.space logo placed here
+  </text>
+
+  <!-- corner cells (auto-placed by LibreLane) -->
+  <rect class="corner" x="95"  y="85"  width="14" height="14"/>
+  <rect class="corner" x="691" y="85"  width="14" height="14"/>
+  <rect class="corner" x="691" y="681" width="14" height="14"/>
+  <rect class="corner" x="95"  y="681" width="14" height="14"/>
+  <text class="pad-num" x="102" y="76" font-size="8">SW</text>
+  <text class="pad-num" x="698" y="76" font-size="8">SE</text>
+  <text class="pad-num" x="102" y="710" font-size="8">NW</text>
+  <text class="pad-num" x="698" y="710" font-size="8">NE</text>
+
+  <!-- ============================================================ -->
+  <!-- PAD_SOUTH (bottom of die in image; 25 pads, SW -> SE)         -->
+  <!-- y=692-712 just above bottom edge of die (die bottom at y=690) -->
+  <!-- pads at x=118 + i*22, w=18, h=20 for i in 0..24               -->
+  <!-- ============================================================ -->
+  <text class="edge-label" x="400" y="755">PAD_SOUTH (25 pads, SW to SE)</text>
+
+  <!-- 25 south pads with class assignments (CW order from SW) -->
+  <!-- 1 clk_pad, 2 rst_n_pad, 3 inputs[0], 4-13 analog 28-37,
+       14 dvdd_pads[2], 15 dvss_pads[2], 16-25 analog 38-47 -->
+  <g>
+    <rect class="iopad" x="118" y="692" width="18" height="20"/><text class="pad-num" x="127" y="730">1</text>
+    <rect class="iopad" x="140" y="692" width="18" height="20"/><text class="pad-num" x="149" y="730">2</text>
+    <rect class="iopad" x="162" y="692" width="18" height="20"/><text class="pad-num" x="171" y="730">3</text>
+    <rect class="ana"   x="184" y="692" width="18" height="20"/><text class="pad-num" x="193" y="730">4</text>
+    <rect class="ana"   x="206" y="692" width="18" height="20"/><text class="pad-num" x="215" y="730">5</text>
+    <rect class="ana"   x="228" y="692" width="18" height="20"/><text class="pad-num" x="237" y="730">6</text>
+    <rect class="ana"   x="250" y="692" width="18" height="20"/><text class="pad-num" x="259" y="730">7</text>
+    <rect class="ana"   x="272" y="692" width="18" height="20"/><text class="pad-num" x="281" y="730">8</text>
+    <rect class="ana"   x="294" y="692" width="18" height="20"/><text class="pad-num" x="303" y="730">9</text>
+    <rect class="ana"   x="316" y="692" width="18" height="20"/><text class="pad-num" x="325" y="730">10</text>
+    <rect class="ana"   x="338" y="692" width="18" height="20"/><text class="pad-num" x="347" y="730">11</text>
+    <rect class="ana"   x="360" y="692" width="18" height="20"/><text class="pad-num" x="369" y="730">12</text>
+    <rect class="ana"   x="382" y="692" width="18" height="20"/><text class="pad-num" x="391" y="730">13</text>
+    <rect class="dvdd"  x="404" y="692" width="18" height="20"/><text class="pad-num" x="413" y="730">14</text>
+    <rect class="dvss"  x="426" y="692" width="18" height="20"/><text class="pad-num" x="435" y="730">15</text>
+    <rect class="ana"   x="448" y="692" width="18" height="20"/><text class="pad-num" x="457" y="730">16</text>
+    <rect class="ana"   x="470" y="692" width="18" height="20"/><text class="pad-num" x="479" y="730">17</text>
+    <rect class="ana"   x="492" y="692" width="18" height="20"/><text class="pad-num" x="501" y="730">18</text>
+    <rect class="ana"   x="514" y="692" width="18" height="20"/><text class="pad-num" x="523" y="730">19</text>
+    <rect class="ana"   x="536" y="692" width="18" height="20"/><text class="pad-num" x="545" y="730">20</text>
+    <rect class="ana"   x="558" y="692" width="18" height="20"/><text class="pad-num" x="567" y="730">21</text>
+    <rect class="ana"   x="580" y="692" width="18" height="20"/><text class="pad-num" x="589" y="730">22</text>
+    <rect class="ana"   x="602" y="692" width="18" height="20"/><text class="pad-num" x="611" y="730">23</text>
+    <rect class="ana"   x="624" y="692" width="18" height="20"/><text class="pad-num" x="633" y="730">24</text>
+    <rect class="ana"   x="646" y="692" width="18" height="20"/><text class="pad-num" x="655" y="730">25</text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- PAD_NORTH (top of die in image; 22 pads, NE -> NW)            -->
+  <!-- y=68-88, drawn so position 1 is at NE (rightmost in image)    -->
+  <!-- ============================================================ -->
+  <text class="edge-label" x="400" y="60">PAD_NORTH (22 pads, NE to NW; reversed vs JuanMoya)</text>
+
+  <!-- 22 north pads, CW from NE: 4 bidir 3..0, 6 analog 15..10,
+       dvss_pads[0], dvdd_pads[0], 10 analog 9..0 -->
+  <g>
+    <rect class="bidir" x="624" y="68" width="18" height="20"/><text class="pad-num" x="633" y="102">1</text>
+    <rect class="bidir" x="602" y="68" width="18" height="20"/><text class="pad-num" x="611" y="102">2</text>
+    <rect class="bidir" x="580" y="68" width="18" height="20"/><text class="pad-num" x="589" y="102">3</text>
+    <rect class="bidir" x="558" y="68" width="18" height="20"/><text class="pad-num" x="567" y="102">4</text>
+    <rect class="ana"   x="536" y="68" width="18" height="20"/><text class="pad-num" x="545" y="102">5</text>
+    <rect class="ana"   x="514" y="68" width="18" height="20"/><text class="pad-num" x="523" y="102">6</text>
+    <rect class="ana"   x="492" y="68" width="18" height="20"/><text class="pad-num" x="501" y="102">7</text>
+    <rect class="ana"   x="470" y="68" width="18" height="20"/><text class="pad-num" x="479" y="102">8</text>
+    <rect class="ana"   x="448" y="68" width="18" height="20"/><text class="pad-num" x="457" y="102">9</text>
+    <rect class="ana"   x="426" y="68" width="18" height="20"/><text class="pad-num" x="435" y="102">10</text>
+    <rect class="dvss"  x="404" y="68" width="18" height="20"/><text class="pad-num" x="413" y="102">11</text>
+    <rect class="dvdd"  x="382" y="68" width="18" height="20"/><text class="pad-num" x="391" y="102">12</text>
+    <rect class="ana"   x="360" y="68" width="18" height="20"/><text class="pad-num" x="369" y="102">13</text>
+    <rect class="ana"   x="338" y="68" width="18" height="20"/><text class="pad-num" x="347" y="102">14</text>
+    <rect class="ana"   x="316" y="68" width="18" height="20"/><text class="pad-num" x="325" y="102">15</text>
+    <rect class="ana"   x="294" y="68" width="18" height="20"/><text class="pad-num" x="303" y="102">16</text>
+    <rect class="ana"   x="272" y="68" width="18" height="20"/><text class="pad-num" x="281" y="102">17</text>
+    <rect class="ana"   x="250" y="68" width="18" height="20"/><text class="pad-num" x="259" y="102">18</text>
+    <rect class="ana"   x="228" y="68" width="18" height="20"/><text class="pad-num" x="237" y="102">19</text>
+    <rect class="ana"   x="206" y="68" width="18" height="20"/><text class="pad-num" x="215" y="102">20</text>
+    <rect class="ana"   x="184" y="68" width="18" height="20"/><text class="pad-num" x="193" y="102">21</text>
+    <rect class="ana"   x="162" y="68" width="18" height="20"/><text class="pad-num" x="171" y="102">22</text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- PAD_EAST (right of die in image; 22 pads, SE -> NE)           -->
+  <!-- x=692-712, position 1 at SE (bottom in image), 22 at NE       -->
+  <!-- ============================================================ -->
+  <text class="edge-label" x="780" y="395" transform="rotate(90 780 395)">PAD_EAST (22 pads, SE to NE)</text>
+
+  <!-- 22 east pads CW from SE: 10 analog 27..18, dvss_pads[1],
+       dvdd_pads[1], 8 bidir 11..4, 2 analog 17..16 -->
+  <g>
+    <rect class="ana"   x="692" y="668" width="18" height="20"/><text class="pad-num-e" x="715" y="682">1</text>
+    <rect class="ana"   x="692" y="646" width="18" height="20"/><text class="pad-num-e" x="715" y="660">2</text>
+    <rect class="ana"   x="692" y="624" width="18" height="20"/><text class="pad-num-e" x="715" y="638">3</text>
+    <rect class="ana"   x="692" y="602" width="18" height="20"/><text class="pad-num-e" x="715" y="616">4</text>
+    <rect class="ana"   x="692" y="580" width="18" height="20"/><text class="pad-num-e" x="715" y="594">5</text>
+    <rect class="ana"   x="692" y="558" width="18" height="20"/><text class="pad-num-e" x="715" y="572">6</text>
+    <rect class="ana"   x="692" y="536" width="18" height="20"/><text class="pad-num-e" x="715" y="550">7</text>
+    <rect class="ana"   x="692" y="514" width="18" height="20"/><text class="pad-num-e" x="715" y="528">8</text>
+    <rect class="ana"   x="692" y="492" width="18" height="20"/><text class="pad-num-e" x="715" y="506">9</text>
+    <rect class="ana"   x="692" y="470" width="18" height="20"/><text class="pad-num-e" x="715" y="484">10</text>
+    <rect class="dvss"  x="692" y="448" width="18" height="20"/><text class="pad-num-e" x="715" y="462">11</text>
+    <rect class="dvdd"  x="692" y="426" width="18" height="20"/><text class="pad-num-e" x="715" y="440">12</text>
+    <rect class="bidir" x="692" y="404" width="18" height="20"/><text class="pad-num-e" x="715" y="418">13</text>
+    <rect class="bidir" x="692" y="382" width="18" height="20"/><text class="pad-num-e" x="715" y="396">14</text>
+    <rect class="bidir" x="692" y="360" width="18" height="20"/><text class="pad-num-e" x="715" y="374">15</text>
+    <rect class="bidir" x="692" y="338" width="18" height="20"/><text class="pad-num-e" x="715" y="352">16</text>
+    <rect class="bidir" x="692" y="316" width="18" height="20"/><text class="pad-num-e" x="715" y="330">17</text>
+    <rect class="bidir" x="692" y="294" width="18" height="20"/><text class="pad-num-e" x="715" y="308">18</text>
+    <rect class="bidir" x="692" y="272" width="18" height="20"/><text class="pad-num-e" x="715" y="286">19</text>
+    <rect class="bidir" x="692" y="250" width="18" height="20"/><text class="pad-num-e" x="715" y="264">20</text>
+    <rect class="ana"   x="692" y="228" width="18" height="20"/><text class="pad-num-e" x="715" y="242">21</text>
+    <rect class="ana"   x="692" y="206" width="18" height="20"/><text class="pad-num-e" x="715" y="220">22</text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- PAD_WEST (left of die in image; 22 pads, NW -> SW)            -->
+  <!-- x=88-108, position 1 at NW (top in image), 22 at SW           -->
+  <!-- ============================================================ -->
+  <text class="edge-label" x="22" y="395" transform="rotate(-90 22 395)">PAD_WEST (22 pads, NW to SW; reversed vs JuanMoya)</text>
+
+  <!-- 22 west pads CW from NW: 2 analog 59..58, 8 bidir 12..19,
+       dvdd_pads[3], dvss_pads[3], 10 analog 57..48 -->
+  <g>
+    <rect class="ana"   x="88" y="118" width="20" height="18"/><text class="pad-num-w" x="84" y="132">1</text>
+    <rect class="ana"   x="88" y="140" width="20" height="18"/><text class="pad-num-w" x="84" y="154">2</text>
+    <rect class="bidir" x="88" y="162" width="20" height="18"/><text class="pad-num-w" x="84" y="176">3</text>
+    <rect class="bidir" x="88" y="184" width="20" height="18"/><text class="pad-num-w" x="84" y="198">4</text>
+    <rect class="bidir" x="88" y="206" width="20" height="18"/><text class="pad-num-w" x="84" y="220">5</text>
+    <rect class="bidir" x="88" y="228" width="20" height="18"/><text class="pad-num-w" x="84" y="242">6</text>
+    <rect class="bidir" x="88" y="250" width="20" height="18"/><text class="pad-num-w" x="84" y="264">7</text>
+    <rect class="bidir" x="88" y="272" width="20" height="18"/><text class="pad-num-w" x="84" y="286">8</text>
+    <rect class="bidir" x="88" y="294" width="20" height="18"/><text class="pad-num-w" x="84" y="308">9</text>
+    <rect class="bidir" x="88" y="316" width="20" height="18"/><text class="pad-num-w" x="84" y="330">10</text>
+    <rect class="dvdd"  x="88" y="338" width="20" height="18"/><text class="pad-num-w" x="84" y="352">11</text>
+    <rect class="dvss"  x="88" y="360" width="20" height="18"/><text class="pad-num-w" x="84" y="374">12</text>
+    <rect class="ana"   x="88" y="382" width="20" height="18"/><text class="pad-num-w" x="84" y="396">13</text>
+    <rect class="ana"   x="88" y="404" width="20" height="18"/><text class="pad-num-w" x="84" y="418">14</text>
+    <rect class="ana"   x="88" y="426" width="20" height="18"/><text class="pad-num-w" x="84" y="440">15</text>
+    <rect class="ana"   x="88" y="448" width="20" height="18"/><text class="pad-num-w" x="84" y="462">16</text>
+    <rect class="ana"   x="88" y="470" width="20" height="18"/><text class="pad-num-w" x="84" y="484">17</text>
+    <rect class="ana"   x="88" y="492" width="20" height="18"/><text class="pad-num-w" x="84" y="506">18</text>
+    <rect class="ana"   x="88" y="514" width="20" height="18"/><text class="pad-num-w" x="84" y="528">19</text>
+    <rect class="ana"   x="88" y="536" width="20" height="18"/><text class="pad-num-w" x="84" y="550">20</text>
+    <rect class="ana"   x="88" y="558" width="20" height="18"/><text class="pad-num-w" x="84" y="572">21</text>
+    <rect class="ana"   x="88" y="580" width="20" height="18"/><text class="pad-num-w" x="84" y="594">22</text>
+  </g>
+
+  <!-- CW arrow inside the die (indicates SW start) -->
+  <circle cx="135" cy="650" r="5" fill="#b00"/>
+  <text class="note" x="125" y="640" text-anchor="end">1) start</text>
+  <text class="note" x="400" y="180" text-anchor="middle">CW reading from SW corner: each PAD_* list begins at index 1 here</text>
+  <path class="arrow-cw" d="M 135,650 L 135,135 L 665,135"/>
+
+  <!-- ============================================================ -->
+  <!-- LEGEND                                                        -->
+  <!-- ============================================================ -->
+  <g transform="translate(50,790)">
+    <rect class="ana"   x="0"   y="0" width="14" height="14"/>
+    <text class="legend" x="20"  y="12">analog (60: asig_5p0)</text>
+    <rect class="bidir" x="160" y="0" width="14" height="14"/>
+    <text class="legend" x="180" y="12">bidir (20: bi_24t)</text>
+    <rect class="dvdd"  x="320" y="0" width="14" height="14"/>
+    <text class="legend" x="340" y="12">DVDD (4)</text>
+    <rect class="dvss"  x="430" y="0" width="14" height="14"/>
+    <text class="legend" x="450" y="12">DVSS (4)</text>
+    <rect class="iopad" x="540" y="0" width="14" height="14"/>
+    <text class="legend" x="560" y="12">clk / rst_n / inputs[0]</text>
+  </g>
+  <g transform="translate(50,815)">
+    <rect class="corner" x="0" y="0" width="14" height="14"/>
+    <text class="legend" x="20"  y="12">corner cell (4: gf180mcu_fd_io__cor, auto-placed by LibreLane)</text>
+  </g>
+  <text class="legend" x="50" y="855" font-style="italic" fill="#555">
+    Bondpad-name convention: analog[i] -> ana(i+1), bidir[i] -> config(i+1), inputs[0] -> input1
+  </text>
+  <text class="legend" x="50" y="872" font-style="italic" fill="#555">
+    Total: 91 placed I/O cells + 4 corner cells = 95.  Source: padring fork librelane/slots/slot_workshop.yaml
+  </text>
+
+  <!-- ============================================================ -->
+  <!-- RIGHT HALF: signal-name lookup tables                         -->
+  <!-- ============================================================ -->
+
+  <!-- table layout helpers -->
+  <!-- Each table: header bar + 22-25 rows of (idx | cell name | bondpad) -->
+  <!-- Width: 270, Row height: 13                                          -->
+
+  <!-- ===== PAD_SOUTH lookup table (top-left of right panel) ====== -->
+  <!-- 25 rows; box height fits all 25 + a footnote -->
+  <g transform="translate(820,60)">
+    <rect class="tbl-bg" x="0" y="0" width="220" height="380" rx="3"/>
+    <rect class="tbl-hdr" x="0" y="0" width="220" height="20" rx="3"/>
+    <text class="tbl-hdr-text" x="110" y="14">PAD_SOUTH (SW -&gt; SE)</text>
+    <text class="tbl-bond" x="20"  y="32">#</text>
+    <text class="tbl-bond" x="50"  y="32">cell</text>
+    <text class="tbl-bond" x="170" y="32">bondpad</text>
+
+    <text class="tbl-idx" x="30" y="46">1</text><text class="tbl-name" x="50" y="46">clk_pad</text><text class="tbl-bond" x="170" y="46">clk *</text>
+    <text class="tbl-idx" x="30" y="59">2</text><text class="tbl-name" x="50" y="59">rst_n_pad</text><text class="tbl-bond" x="170" y="59">rst_n *</text>
+    <text class="tbl-idx" x="30" y="72">3</text><text class="tbl-name" x="50" y="72">inputs[0].pad</text><text class="tbl-bond" x="170" y="72">input1</text>
+    <text class="tbl-idx" x="30" y="85">4</text><text class="tbl-name" x="50" y="85">analog[28].pad</text><text class="tbl-bond" x="170" y="85">ana29</text>
+    <text class="tbl-idx" x="30" y="98">5</text><text class="tbl-name" x="50" y="98">analog[29].pad</text><text class="tbl-bond" x="170" y="98">ana30</text>
+    <text class="tbl-idx" x="30" y="111">6</text><text class="tbl-name" x="50" y="111">analog[30].pad</text><text class="tbl-bond" x="170" y="111">ana31</text>
+    <text class="tbl-idx" x="30" y="124">7</text><text class="tbl-name" x="50" y="124">analog[31].pad</text><text class="tbl-bond" x="170" y="124">ana32</text>
+    <text class="tbl-idx" x="30" y="137">8</text><text class="tbl-name" x="50" y="137">analog[32].pad</text><text class="tbl-bond" x="170" y="137">ana33</text>
+    <text class="tbl-idx" x="30" y="150">9</text><text class="tbl-name" x="50" y="150">analog[33].pad</text><text class="tbl-bond" x="170" y="150">ana34</text>
+    <text class="tbl-idx" x="30" y="163">10</text><text class="tbl-name" x="50" y="163">analog[34].pad</text><text class="tbl-bond" x="170" y="163">ana35</text>
+    <text class="tbl-idx" x="30" y="176">11</text><text class="tbl-name" x="50" y="176">analog[35].pad</text><text class="tbl-bond" x="170" y="176">ana36</text>
+    <text class="tbl-idx" x="30" y="189">12</text><text class="tbl-name" x="50" y="189">analog[36].pad</text><text class="tbl-bond" x="170" y="189">ana37</text>
+    <text class="tbl-idx" x="30" y="202">13</text><text class="tbl-name" x="50" y="202">analog[37].pad</text><text class="tbl-bond" x="170" y="202">ana38</text>
+    <text class="tbl-idx" x="30" y="215">14</text><text class="tbl-name" x="50" y="215">dvdd_pads[2].pad</text><text class="tbl-bond" x="170" y="215">vdd_ana2</text>
+    <text class="tbl-idx" x="30" y="228">15</text><text class="tbl-name" x="50" y="228">dvss_pads[2].pad</text><text class="tbl-bond" x="170" y="228">vss_ana2</text>
+    <text class="tbl-idx" x="30" y="241">16</text><text class="tbl-name" x="50" y="241">analog[38].pad</text><text class="tbl-bond" x="170" y="241">ana39</text>
+    <text class="tbl-idx" x="30" y="254">17</text><text class="tbl-name" x="50" y="254">analog[39].pad</text><text class="tbl-bond" x="170" y="254">ana40</text>
+    <text class="tbl-idx" x="30" y="267">18</text><text class="tbl-name" x="50" y="267">analog[40].pad</text><text class="tbl-bond" x="170" y="267">ana41</text>
+    <text class="tbl-idx" x="30" y="280">19</text><text class="tbl-name" x="50" y="280">analog[41].pad</text><text class="tbl-bond" x="170" y="280">ana42</text>
+    <text class="tbl-idx" x="30" y="293">20</text><text class="tbl-name" x="50" y="293">analog[42].pad</text><text class="tbl-bond" x="170" y="293">ana43</text>
+    <text class="tbl-idx" x="30" y="306">21</text><text class="tbl-name" x="50" y="306">analog[43].pad</text><text class="tbl-bond" x="170" y="306">ana44</text>
+    <text class="tbl-idx" x="30" y="319">22</text><text class="tbl-name" x="50" y="319">analog[44].pad</text><text class="tbl-bond" x="170" y="319">ana45</text>
+    <text class="tbl-idx" x="30" y="332">23</text><text class="tbl-name" x="50" y="332">analog[45].pad</text><text class="tbl-bond" x="170" y="332">ana46</text>
+    <text class="tbl-idx" x="30" y="345">24</text><text class="tbl-name" x="50" y="345">analog[46].pad</text><text class="tbl-bond" x="170" y="345">ana47</text>
+    <text class="tbl-idx" x="30" y="358">25</text><text class="tbl-name" x="50" y="358">analog[47].pad</text><text class="tbl-bond" x="170" y="358">ana48</text>
+    <text x="10" y="375" font-size="9" fill="#a00" font-style="italic">* workshop-mandatory; do not rename or remove</text>
+  </g>
+
+  <!-- ===== PAD_EAST lookup table ===== -->
+  <g transform="translate(1060,60)">
+    <rect class="tbl-bg" x="0" y="0" width="200" height="320" rx="3"/>
+    <rect class="tbl-hdr" x="0" y="0" width="200" height="20" rx="3"/>
+    <text class="tbl-hdr-text" x="100" y="14">PAD_EAST (SE -&gt; NE)</text>
+    <text class="tbl-bond" x="20"  y="32">#</text>
+    <text class="tbl-bond" x="50"  y="32">cell</text>
+    <text class="tbl-bond" x="155" y="32">bondpad</text>
+
+    <text class="tbl-idx" x="30" y="46">1</text><text class="tbl-name" x="50" y="46">analog[27].pad</text><text class="tbl-bond" x="155" y="46">ana28</text>
+    <text class="tbl-idx" x="30" y="59">2</text><text class="tbl-name" x="50" y="59">analog[26].pad</text><text class="tbl-bond" x="155" y="59">ana27</text>
+    <text class="tbl-idx" x="30" y="72">3</text><text class="tbl-name" x="50" y="72">analog[25].pad</text><text class="tbl-bond" x="155" y="72">ana26</text>
+    <text class="tbl-idx" x="30" y="85">4</text><text class="tbl-name" x="50" y="85">analog[24].pad</text><text class="tbl-bond" x="155" y="85">ana25</text>
+    <text class="tbl-idx" x="30" y="98">5</text><text class="tbl-name" x="50" y="98">analog[23].pad</text><text class="tbl-bond" x="155" y="98">ana24</text>
+    <text class="tbl-idx" x="30" y="111">6</text><text class="tbl-name" x="50" y="111">analog[22].pad</text><text class="tbl-bond" x="155" y="111">ana23</text>
+    <text class="tbl-idx" x="30" y="124">7</text><text class="tbl-name" x="50" y="124">analog[21].pad</text><text class="tbl-bond" x="155" y="124">ana22</text>
+    <text class="tbl-idx" x="30" y="137">8</text><text class="tbl-name" x="50" y="137">analog[20].pad</text><text class="tbl-bond" x="155" y="137">ana21</text>
+    <text class="tbl-idx" x="30" y="150">9</text><text class="tbl-name" x="50" y="150">analog[19].pad</text><text class="tbl-bond" x="155" y="150">ana20</text>
+    <text class="tbl-idx" x="30" y="163">10</text><text class="tbl-name" x="50" y="163">analog[18].pad</text><text class="tbl-bond" x="155" y="163">ana19</text>
+    <text class="tbl-idx" x="30" y="176">11</text><text class="tbl-name" x="50" y="176">dvss_pads[1].pad</text><text class="tbl-bond" x="155" y="176">vss_dig2</text>
+    <text class="tbl-idx" x="30" y="189">12</text><text class="tbl-name" x="50" y="189">dvdd_pads[1].pad</text><text class="tbl-bond" x="155" y="189">vdd_dig1</text>
+    <text class="tbl-idx" x="30" y="202">13</text><text class="tbl-name" x="50" y="202">bidir[11].pad</text><text class="tbl-bond" x="155" y="202">config12</text>
+    <text class="tbl-idx" x="30" y="215">14</text><text class="tbl-name" x="50" y="215">bidir[10].pad</text><text class="tbl-bond" x="155" y="215">config11</text>
+    <text class="tbl-idx" x="30" y="228">15</text><text class="tbl-name" x="50" y="228">bidir[9].pad</text><text class="tbl-bond" x="155" y="228">config10</text>
+    <text class="tbl-idx" x="30" y="241">16</text><text class="tbl-name" x="50" y="241">bidir[8].pad</text><text class="tbl-bond" x="155" y="241">config9</text>
+    <text class="tbl-idx" x="30" y="254">17</text><text class="tbl-name" x="50" y="254">bidir[7].pad</text><text class="tbl-bond" x="155" y="254">config8</text>
+    <text class="tbl-idx" x="30" y="267">18</text><text class="tbl-name" x="50" y="267">bidir[6].pad</text><text class="tbl-bond" x="155" y="267">config7</text>
+    <text class="tbl-idx" x="30" y="280">19</text><text class="tbl-name" x="50" y="280">bidir[5].pad</text><text class="tbl-bond" x="155" y="280">config6</text>
+    <text class="tbl-idx" x="30" y="293">20</text><text class="tbl-name" x="50" y="293">bidir[4].pad</text><text class="tbl-bond" x="155" y="293">config5</text>
+    <text class="tbl-idx" x="30" y="306">21</text><text class="tbl-name" x="50" y="306">analog[17].pad</text><text class="tbl-bond" x="155" y="306">ana18</text>
+    <text class="tbl-idx" x="30" y="319">22</text><text class="tbl-name" x="50" y="319">analog[16].pad</text><text class="tbl-bond" x="155" y="319">ana17</text>
+  </g>
+
+  <!-- ===== PAD_NORTH lookup table ===== -->
+  <g transform="translate(820,460)">
+    <rect class="tbl-bg" x="0" y="0" width="220" height="320" rx="3"/>
+    <rect class="tbl-hdr" x="0" y="0" width="220" height="20" rx="3"/>
+    <text class="tbl-hdr-text" x="110" y="14">PAD_NORTH (NE -&gt; NW)</text>
+    <text class="tbl-bond" x="20"  y="32">#</text>
+    <text class="tbl-bond" x="50"  y="32">cell</text>
+    <text class="tbl-bond" x="170" y="32">bondpad</text>
+
+    <text class="tbl-idx" x="30" y="46">1</text><text class="tbl-name" x="50" y="46">bidir[3].pad</text><text class="tbl-bond" x="170" y="46">config4</text>
+    <text class="tbl-idx" x="30" y="59">2</text><text class="tbl-name" x="50" y="59">bidir[2].pad</text><text class="tbl-bond" x="170" y="59">config3</text>
+    <text class="tbl-idx" x="30" y="72">3</text><text class="tbl-name" x="50" y="72">bidir[1].pad</text><text class="tbl-bond" x="170" y="72">config2</text>
+    <text class="tbl-idx" x="30" y="85">4</text><text class="tbl-name" x="50" y="85">bidir[0].pad</text><text class="tbl-bond" x="170" y="85">config1</text>
+    <text class="tbl-idx" x="30" y="98">5</text><text class="tbl-name" x="50" y="98">analog[15].pad</text><text class="tbl-bond" x="170" y="98">ana16</text>
+    <text class="tbl-idx" x="30" y="111">6</text><text class="tbl-name" x="50" y="111">analog[14].pad</text><text class="tbl-bond" x="170" y="111">ana15</text>
+    <text class="tbl-idx" x="30" y="124">7</text><text class="tbl-name" x="50" y="124">analog[13].pad</text><text class="tbl-bond" x="170" y="124">ana14</text>
+    <text class="tbl-idx" x="30" y="137">8</text><text class="tbl-name" x="50" y="137">analog[12].pad</text><text class="tbl-bond" x="170" y="137">ana13</text>
+    <text class="tbl-idx" x="30" y="150">9</text><text class="tbl-name" x="50" y="150">analog[11].pad</text><text class="tbl-bond" x="170" y="150">ana12</text>
+    <text class="tbl-idx" x="30" y="163">10</text><text class="tbl-name" x="50" y="163">analog[10].pad</text><text class="tbl-bond" x="170" y="163">ana11</text>
+    <text class="tbl-idx" x="30" y="176">11</text><text class="tbl-name" x="50" y="176">dvss_pads[0].pad</text><text class="tbl-bond" x="170" y="176">vss_ana1</text>
+    <text class="tbl-idx" x="30" y="189">12</text><text class="tbl-name" x="50" y="189">dvdd_pads[0].pad</text><text class="tbl-bond" x="170" y="189">vdd_ana1</text>
+    <text class="tbl-idx" x="30" y="202">13</text><text class="tbl-name" x="50" y="202">analog[9].pad</text><text class="tbl-bond" x="170" y="202">ana10</text>
+    <text class="tbl-idx" x="30" y="215">14</text><text class="tbl-name" x="50" y="215">analog[8].pad</text><text class="tbl-bond" x="170" y="215">ana9</text>
+    <text class="tbl-idx" x="30" y="228">15</text><text class="tbl-name" x="50" y="228">analog[7].pad</text><text class="tbl-bond" x="170" y="228">ana8</text>
+    <text class="tbl-idx" x="30" y="241">16</text><text class="tbl-name" x="50" y="241">analog[6].pad</text><text class="tbl-bond" x="170" y="241">ana7</text>
+    <text class="tbl-idx" x="30" y="254">17</text><text class="tbl-name" x="50" y="254">analog[5].pad</text><text class="tbl-bond" x="170" y="254">ana6</text>
+    <text class="tbl-idx" x="30" y="267">18</text><text class="tbl-name" x="50" y="267">analog[4].pad</text><text class="tbl-bond" x="170" y="267">ana5</text>
+    <text class="tbl-idx" x="30" y="280">19</text><text class="tbl-name" x="50" y="280">analog[3].pad</text><text class="tbl-bond" x="170" y="280">ana4</text>
+    <text class="tbl-idx" x="30" y="293">20</text><text class="tbl-name" x="50" y="293">analog[2].pad</text><text class="tbl-bond" x="170" y="293">ana3</text>
+    <text class="tbl-idx" x="30" y="306">21</text><text class="tbl-name" x="50" y="306">analog[1].pad</text><text class="tbl-bond" x="170" y="306">ana2</text>
+    <text class="tbl-idx" x="30" y="319">22</text><text class="tbl-name" x="50" y="319">analog[0].pad</text><text class="tbl-bond" x="170" y="319">ana1</text>
+  </g>
+
+  <!-- ===== PAD_WEST lookup table ===== -->
+  <g transform="translate(1060,460)">
+    <rect class="tbl-bg" x="0" y="0" width="200" height="320" rx="3"/>
+    <rect class="tbl-hdr" x="0" y="0" width="200" height="20" rx="3"/>
+    <text class="tbl-hdr-text" x="100" y="14">PAD_WEST (NW -&gt; SW)</text>
+    <text class="tbl-bond" x="20"  y="32">#</text>
+    <text class="tbl-bond" x="50"  y="32">cell</text>
+    <text class="tbl-bond" x="155" y="32">bondpad</text>
+
+    <text class="tbl-idx" x="30" y="46">1</text><text class="tbl-name" x="50" y="46">analog[59].pad</text><text class="tbl-bond" x="155" y="46">ana60</text>
+    <text class="tbl-idx" x="30" y="59">2</text><text class="tbl-name" x="50" y="59">analog[58].pad</text><text class="tbl-bond" x="155" y="59">ana59</text>
+    <text class="tbl-idx" x="30" y="72">3</text><text class="tbl-name" x="50" y="72">bidir[12].pad</text><text class="tbl-bond" x="155" y="72">config13</text>
+    <text class="tbl-idx" x="30" y="85">4</text><text class="tbl-name" x="50" y="85">bidir[13].pad</text><text class="tbl-bond" x="155" y="85">config14</text>
+    <text class="tbl-idx" x="30" y="98">5</text><text class="tbl-name" x="50" y="98">bidir[14].pad</text><text class="tbl-bond" x="155" y="98">config15</text>
+    <text class="tbl-idx" x="30" y="111">6</text><text class="tbl-name" x="50" y="111">bidir[15].pad</text><text class="tbl-bond" x="155" y="111">config16</text>
+    <text class="tbl-idx" x="30" y="124">7</text><text class="tbl-name" x="50" y="124">bidir[16].pad</text><text class="tbl-bond" x="155" y="124">config17</text>
+    <text class="tbl-idx" x="30" y="137">8</text><text class="tbl-name" x="50" y="137">bidir[17].pad</text><text class="tbl-bond" x="155" y="137">config18</text>
+    <text class="tbl-idx" x="30" y="150">9</text><text class="tbl-name" x="50" y="150">bidir[18].pad</text><text class="tbl-bond" x="155" y="150">config19</text>
+    <text class="tbl-idx" x="30" y="163">10</text><text class="tbl-name" x="50" y="163">bidir[19].pad</text><text class="tbl-bond" x="155" y="163">config20</text>
+    <text class="tbl-idx" x="30" y="176">11</text><text class="tbl-name" x="50" y="176">dvdd_pads[3].pad</text><text class="tbl-bond" x="155" y="176">vdd_dig4</text>
+    <text class="tbl-idx" x="30" y="189">12</text><text class="tbl-name" x="50" y="189">dvss_pads[3].pad</text><text class="tbl-bond" x="155" y="189">vss_dig3</text>
+    <text class="tbl-idx" x="30" y="202">13</text><text class="tbl-name" x="50" y="202">analog[57].pad</text><text class="tbl-bond" x="155" y="202">ana58</text>
+    <text class="tbl-idx" x="30" y="215">14</text><text class="tbl-name" x="50" y="215">analog[56].pad</text><text class="tbl-bond" x="155" y="215">ana57</text>
+    <text class="tbl-idx" x="30" y="228">15</text><text class="tbl-name" x="50" y="228">analog[55].pad</text><text class="tbl-bond" x="155" y="228">ana56</text>
+    <text class="tbl-idx" x="30" y="241">16</text><text class="tbl-name" x="50" y="241">analog[54].pad</text><text class="tbl-bond" x="155" y="241">ana55</text>
+    <text class="tbl-idx" x="30" y="254">17</text><text class="tbl-name" x="50" y="254">analog[53].pad</text><text class="tbl-bond" x="155" y="254">ana54</text>
+    <text class="tbl-idx" x="30" y="267">18</text><text class="tbl-name" x="50" y="267">analog[52].pad</text><text class="tbl-bond" x="155" y="267">ana53</text>
+    <text class="tbl-idx" x="30" y="280">19</text><text class="tbl-name" x="50" y="280">analog[51].pad</text><text class="tbl-bond" x="155" y="280">ana52</text>
+    <text class="tbl-idx" x="30" y="293">20</text><text class="tbl-name" x="50" y="293">analog[50].pad</text><text class="tbl-bond" x="155" y="293">ana51</text>
+    <text class="tbl-idx" x="30" y="306">21</text><text class="tbl-name" x="50" y="306">analog[49].pad</text><text class="tbl-bond" x="155" y="306">ana50</text>
+    <text class="tbl-idx" x="30" y="319">22</text><text class="tbl-name" x="50" y="319">analog[48].pad</text><text class="tbl-bond" x="155" y="319">ana49</text>
+  </g>
+
+  <!-- footer -->
+  <text class="legend" x="640" y="910" text-anchor="middle" fill="#777">
+    chipathon-gf180mcu-librelane-examples - diagrams/workshop_pad_map.svg
+  </text>
+</svg>

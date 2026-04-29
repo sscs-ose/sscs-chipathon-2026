@@ -1,0 +1,8 @@
+# cocotb standard Makefile include. Called from Makefile per test.
+#
+# Expected to be invoked with TOPLEVEL, MODULE, VERILOG_SOURCES set.
+
+TOPLEVEL_LANG ?= verilog
+SIM           ?= icarus
+
+include $(shell cocotb-config --makefiles)/Makefile.sim

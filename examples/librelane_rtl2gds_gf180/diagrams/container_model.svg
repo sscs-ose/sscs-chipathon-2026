@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" font-family="Helvetica,Arial,sans-serif">
+  <title>Host / container / bind-mount model for the chipathon examples</title>
+  <desc>
+    All examples run inside a single long-lived docker container
+    (hpretl/iic-osic-tools:next, named `gf180`). The host's
+    `~/eda/designs` is bind-mounted at `/foss/designs`; artifacts
+    survive `docker rm`. Every command flows through `docker exec
+    gf180 bash -lc ...`.
+  </desc>
+
+  <style>
+    .title      { font-size:22px; fill:#111; text-anchor:middle; font-weight:bold; }
+    .subtitle   { font-size:14px; fill:#444; text-anchor:middle; font-style:italic; }
+    .host       { fill:#eef6ff; stroke:#003b73; stroke-width:2; }
+    .container  { fill:#eefdef; stroke:#156b2e; stroke-width:2; }
+    .label-big  { font-size:17px; fill:#111; font-weight:bold; }
+    .label      { font-size:13px; fill:#111; font-weight:bold; }
+    .kv         { font-size:12px; fill:#111; font-family:monospace; }
+    .sub        { font-size:12px; fill:#444; }
+    .bind       { fill:none; stroke:#b00; stroke-width:2.5; stroke-dasharray:6,4; marker-start:url(#arrowhead-red-l); marker-end:url(#arrowhead-red-r); }
+    .bind-label { font-size:14px; fill:#b00; font-weight:bold; }
+    .arrow      { fill:none; stroke:#555; stroke-width:1.8; marker-end:url(#arrowhead); }
+    .exec-label { font-size:14px; fill:#444; font-weight:bold; }
+    .footer     { font-size:11px; fill:#777; text-anchor:middle; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L0,10 L9,5 z" fill="#555"/>
+    </marker>
+    <marker id="arrowhead-red-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L0,10 L9,5 z" fill="#b00"/>
+    </marker>
+    <marker id="arrowhead-red-l" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M9,0 L9,10 L1,5 z" fill="#b00"/>
+    </marker>
+  </defs>
+
+  <!-- header -->
+  <text class="title"    x="550" y="30">Host / container / bind-mount</text>
+  <text class="subtitle" x="550" y="52">one long-lived `gf180` container, one bind-mount; all commands via `docker exec`</text>
+
+  <!-- Host side -->
+  <rect class="host" x="40" y="90" width="420" height="400" rx="8"/>
+  <text class="label-big" x="55" y="115">Host (your laptop)</text>
+  <text class="sub"        x="55" y="132">Linux, Docker Engine, ~40 GB free disk, Python 3.9+</text>
+
+  <!-- Host contents -->
+  <text class="label" x="55"  y="165">Workspace directory:</text>
+  <text class="kv"    x="55"  y="183">~/eda/designs/</text>
+  <text class="sub"   x="75"  y="201">counter_demo/                <tspan fill="#888">(nb 01)</tspan></text>
+  <text class="sub"   x="75"  y="217">chip_custom/template/        <tspan fill="#888">(nb 02)</tspan></text>
+  <text class="sub"   x="75"  y="233">chipathon_padring/template/  <tspan fill="#888">(nb 00, 03)</tspan></text>
+  <text class="sub"   x="75"  y="249">multimacro_chipathon/template/ <tspan fill="#888">(nb 04 fork)</tspan></text>
+  <text class="sub"   x="75"  y="265">multimacro_demo/             <tspan fill="#888">(nb 04 staging)</tspan></text>
+
+  <text class="label" x="55"  y="305">Notebook kernel (on host):</text>
+  <text class="sub"   x="75"  y="323">Edits files under ~/eda/designs/ with the standard</text>
+  <text class="sub"   x="75"  y="341">Python stdlib (pathlib, shutil, subprocess) plus</text>
+  <text class="sub"   x="75"  y="359">PyYAML for the chip-top patch in notebook 04.</text>
+  <text class="sub"   x="75"  y="377">Shells into the container via `docker exec ... bash -lc`.</text>
+
+  <text class="label" x="55"  y="413">Survives `docker rm`:</text>
+  <text class="sub"   x="75"  y="431">Everything under ~/eda/designs/ is host-owned;</text>
+  <text class="sub"   x="75"  y="449">the container itself is disposable.</text>
+
+  <!-- Container side -->
+  <rect class="container" x="640" y="90" width="420" height="400" rx="8"/>
+  <text class="label-big" x="655" y="115">Container `gf180`</text>
+  <text class="sub"        x="655" y="132">hpretl/iic-osic-tools:next   (~15 GB one-time pull)</text>
+
+  <text class="label" x="655" y="165">Bind-mounted workspace:</text>
+  <text class="kv"    x="655" y="183">/foss/designs/</text>
+  <text class="sub"   x="675" y="203">same five subdirs as the host (left column).</text>
+  <text class="sub"   x="675" y="221">Container reads/writes them as if local.</text>
+
+  <text class="label" x="655" y="245">PDK tree (used by every notebook):</text>
+  <text class="kv"    x="655" y="263">/foss/pdks/gf180mcuD/</text>
+  <text class="sub"   x="675" y="281">stdcell libs, LEF, Liberty, SPICE, DRC decks.</text>
+  <text class="sub"   x="675" y="299" font-style="italic">(image also ships ihp-sg13g2 trees; not used by these examples.)</text>
+
+  <text class="label" x="655" y="335">EDA tools bundled in image:</text>
+  <text class="sub"   x="675" y="353">Yosys, OpenROAD, Magic, KLayout, Netgen, Icarus,</text>
+  <text class="sub"   x="675" y="371">cocotb, Verilator, LibreLane, ciel.</text>
+
+  <text class="label" x="655" y="405">Long-running idle entrypoint:</text>
+  <text class="kv"    x="675" y="423">--skip sleep infinity</text>
+  <text class="sub"   x="675" y="441">--skip is the iic-osic-tools image flag that bypasses</text>
+  <text class="sub"   x="675" y="457">its desktop/VNC entry; sleep infinity then keeps the</text>
+  <text class="sub"   x="675" y="473">container alive for repeated `docker exec`.</text>
+
+  <!-- Two arrows in the gap. Long captions live in the bottom band
+       so they never overflow into the host/container content. -->
+  <path class="arrow" d="M 460 150 L 640 150"/>
+  <text class="exec-label" x="550" y="142" text-anchor="middle">docker exec</text>
+
+  <!-- bind-mount is bidirectional: container writes survive on the
+       host, host edits show up in the container. -->
+  <path class="bind" d="M 465 290 L 635 290"/>
+  <text class="bind-label" x="550" y="282" text-anchor="middle">bind-mount</text>
+  <text class="sub"        x="550" y="307" text-anchor="middle" font-style="italic">same physical files</text>
+
+  <!-- bottom band -->
+  <rect x="40" y="500" width="1020" height="46" fill="#fafafa" stroke="#ccc" stroke-width="1" rx="4"/>
+  <text class="sub" x="550" y="518" text-anchor="middle">
+    bind-mount: <tspan font-family="monospace">-v ~/eda/designs:/foss/designs</tspan>
+    &#160;&#160;|&#160;&#160; docker exec: notebook cell -&gt; container shell
+  </text>
+  <text class="sub" x="550" y="536" text-anchor="middle">
+    One-time bootstrap: <tspan font-family="monospace">scripts/bootstrap_container.sh</tspan> pulls the image and starts `gf180` with the mount in place.
+  </text>
+
+  <text class="footer" x="550" y="558">chipathon-gf180mcu-librelane-examples — diagrams/container_model.svg</text>
+</svg>

@@ -1,0 +1,27 @@
+# Standalone hardening config for the ALU macro.
+# Hardens rtl/alu_macro.sv (registered wrapper around rtl/alu.sv) to
+# satisfy the Classic flow's clocked-design assumption.
+
+meta:
+  version: 3
+  flow: Classic
+
+DESIGN_NAME: alu_macro
+
+VERILOG_FILES:
+  - dir::../rtl/alu.sv
+  - dir::../rtl/alu_macro.sv
+
+CLOCK_PORT: clk
+CLOCK_NET: clk
+CLOCK_PERIOD: 40   # ns, same as counter
+
+# 2-stage pipeline (input regs + output regs) around a tiny combinational
+# core. Negligible area.
+FP_SIZING: relative
+FP_CORE_UTIL: 30
+PL_TARGET_DENSITY_PCT: 55
+
+SYNTH_STRATEGY: "AREA 0"
+
+GRT_ALLOW_CONGESTION: true
