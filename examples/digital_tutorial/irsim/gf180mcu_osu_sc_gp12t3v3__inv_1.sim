@@ -1,0 +1,7 @@
+| units: 5 tech: gf180mcuD format: MIT
+x A VSS Y VSS s=170,54 d=170,54 l=6 w=17 x=19 y=19 nfet_03v3
+x A VDD Y VDD s=340,88 d=340,88 l=6 w=34 x=19 y=115 pfet_03v3
+R Y 37
+R A 176
+R VDD 1341
+R VSS 23

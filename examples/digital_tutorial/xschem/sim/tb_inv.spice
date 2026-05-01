@@ -1,0 +1,38 @@
+** sch_path: /home/lrburle/Nextcloud/Mass Storage/Projects/syracuse_tutorial/xschem/sim/tb_inv.sch
+**.subckt tb_inv Y A
+*.opin Y
+*.ipin A
+V1 VDD GND 3.3
+V2 VSS GND 0
+V3 A GND PULSE(0 3.3 0 1ns 1ns 2us 4us)
+x1 A Y VDD VSS gf180mcu_osu_sc_gp12t3v3__inv_1
+**** begin user architecture code
+
+
+.include $PDK_ROOT/gf180mcuD/libs.tech/ngspice/design.ngspice
+.library "$PDK_ROOT/gf180mcuD/libs.tech/ngspice/sm141064.ngspice" typical
+
+.control
+TRAN 0.1u 5u
+save all
+set filetype=binary
+write tb_inv_tran.raw
+.endc
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  gf180mcu_osu_sc_gp12t3v3__inv_1.sym # of pins=2
+** sym_path: /home/lrburle/Nextcloud/Mass Storage/Projects/syracuse_tutorial/xschem/sim/gf180mcu_osu_sc_gp12t3v3__inv_1.sym
+** sch_path: /home/lrburle/Nextcloud/Mass Storage/Projects/syracuse_tutorial/xschem/sim/gf180mcu_osu_sc_gp12t3v3__inv_1.sch
+.subckt gf180mcu_osu_sc_gp12t3v3__inv_1 A Y VDD VSS
+*.ipin A
+*.opin Y
+XM1 Y A VDD VDD pfet_03v3 L=0.3u W=1.7u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM2 Y A VSS VSS nfet_03v3 L=0.3u W=0.85u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+.ends
+
+.end

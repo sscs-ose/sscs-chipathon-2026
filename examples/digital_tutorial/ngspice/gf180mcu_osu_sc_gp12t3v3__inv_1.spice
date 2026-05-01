@@ -1,0 +1,20 @@
+* Copyright 2022 Google LLC
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+
+* NGSPICE file created from gf180mcu_osu_sc_gp12t3v3__inv_1.ext - technology: gf180mcuD
+
+.subckt gf180mcu_osu_sc_gp12t3v3__inv_1 A Y VDD VSS
+X0 Y A VSS VSS nfet_03v3 ad=0.425p pd=2.7u as=0.425p ps=2.7u w=0.85u l=0.3u
+X1 Y A VDD VDD pfet_03v3 ad=0.85p pd=4.4u as=0.85p ps=4.4u w=1.7u l=0.3u
+.ends

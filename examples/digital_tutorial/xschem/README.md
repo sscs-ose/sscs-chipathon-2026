@@ -1,0 +1,1 @@
+This file contains schematics using the xschem program from https://xschem.sourceforge.io/stefan/index.html.  Due to some of the open-source issues with multiple files.  These files are used for Layout vs. Schematic (LVS) with netgen.  The simulation files are different and found in the sim subdirectory underneath.  

@@ -1,0 +1,38 @@
+
+Cell nfet_03v3 (1) disconnected node: drain
+Cell nfet_03v3 (1) disconnected node: gate
+Cell nfet_03v3 (1) disconnected node: source
+Cell nfet_03v3 (1) disconnected node: bulk
+Equate elements:  no current cell.
+Device classes nfet_03v3 and nfet_03v3 are equivalent.
+
+Cell pfet_03v3 (1) disconnected node: drain
+Cell pfet_03v3 (1) disconnected node: gate
+Cell pfet_03v3 (1) disconnected node: source
+Cell pfet_03v3 (1) disconnected node: bulk
+Equate elements:  no current cell.
+Device classes pfet_03v3 and pfet_03v3 are equivalent.
+
+Subcircuit summary:
+Circuit 1: gf180mcu_osu_sc_gp12t3v3__inv_1 |Circuit 2: gf180mcu_osu_sc_gp12t3v3__inv_1 
+-------------------------------------------|-------------------------------------------
+nfet_03v3 (1)                              |nfet_03v3 (1)                              
+pfet_03v3 (1)                              |pfet_03v3 (1)                              
+Number of devices: 2                       |Number of devices: 2                       
+Number of nets: 4                          |Number of nets: 4                          
+---------------------------------------------------------------------------------------
+Netlists match uniquely.
+
+Subcircuit pins:
+Circuit 1: gf180mcu_osu_sc_gp12t3v3__inv_1 |Circuit 2: gf180mcu_osu_sc_gp12t3v3__inv_1 
+-------------------------------------------|-------------------------------------------
+Y                                          |Y                                          
+A                                          |A                                          
+VDD                                        |VDD                                        
+VSS                                        |VSS                                        
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_osu_sc_gp12t3v3__inv_1 and gf180mcu_osu_sc_gp12t3v3__inv_1 are equivalent.
+
+Final result: Circuits match uniquely.
+.

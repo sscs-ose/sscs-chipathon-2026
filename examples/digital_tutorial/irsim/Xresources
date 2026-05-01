@@ -1,0 +1,12 @@
+#define OSU #FE5C00
+irsim.geometry: =1000x300+0+0
+irsim.background: black
+irsim.foreground: white
+irsim.reverseVideo: off
+irsim.highlight: OSU
+irsim.traceColor: OSU
+irsim.bannerBg: white
+irsim.bannerFg: black
+irsim.borderColor: black
+irsim.font: 6x13
+irsim.borderWidth: 2

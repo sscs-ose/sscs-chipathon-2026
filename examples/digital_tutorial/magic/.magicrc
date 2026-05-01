@@ -1,0 +1,135 @@
+# Copyright 2022 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+puts stdout "Sourcing design .magicrc for technology gf180mcu"
+# drc off
+drc euclidean on
+
+# loading technology
+#tech load ../../char/techfiles/gf180mcuD.tech
+tech load $env(PDK_ROOT)/gf180mcuD/libs.tech/magic/gf180mcuD.tech
+
+###############################################################################
+#  Default .magicrc macro file (original)
+###############################################################################
+echo ""
+macro s "select"
+macro S "select more"
+macro a "select area"
+macro A "select more area"
+macro f "select cell"
+macro C "select clear"
+macro d "delete"
+macro ^D "erase $"
+macro t "move"
+macro T "stretch"
+macro c "copy"
+macro ^X "expand toggle"
+macro x "expand"
+macro X "unexpand"
+macro q "move left 1"
+macro w "move down 1"
+macro e "move up 1"
+macro r "move right 1"
+macro Q "stretch left 1"
+macro W "stretch down 1"
+macro E "stretch up 1"
+macro R "stretch right 1"
+macro g "gridspace"
+macro G "gridspace 2"
+macro u "undo"
+macro U "redo"
+macro v "view"
+macro z "findbox zoom"
+macro Z "zoom 2"
+macro b "box"
+macro B "findbox"
+macro , "center"
+macro y "drc why"
+macro ^L "redraw"
+macro y "drc why"
+macro ? "help"
+macro o "openwindow"
+macro O "closewindow"
+macro " " "tool"
+imacro XK_colon ":"
+imacro XK_semicolon ":"
+macro ^R "iroute route -dBox"
+macro ^N "iroute route -dSelection"
+# Allow some box manipulation from all tools.
+macro Control_Button1 "*bypass box move bl cursor"
+macro Control_Button2 "*bypass paint cursor"
+macro Control_Button3 "*bypass box corner ur cursor"
+# Box tool button bindings
+macro Button1 "*bypass box move bl cursor"
+macro Shift_Button1 "*bypass box corner bl cursor"
+macro Button2 "*bypass paint cursor"
+macro Shift_Button2 "*bypass erase cursor"
+macro Button3 "*bypass box corner ur cursor"
+macro Shift_Button3 "*bypass box move ur cursor"
+# Color window button bindings
+macro color Button1 "pushbutton left"
+macro color Button2 "pushbutton middle"
+macro color Button3 "pushbutton right"
+macro color u "undo"
+macro color U "redo"
+macro color plus "color next"
+macro color minus "color last"
+# Netlist window button bindings
+macro netlist Button1 "pushbutton left"
+macro netlist Button2 "pushbutton middle"
+macro netlist Button3 "pushbutton right"
+# Wind3D window key bindings
+macro wind3d  L "level up"
+macro wind3d  l "level down"
+macro wind3d  C "cif"
+macro wind3d  " " "defaults"
+macro wind3d  ^L "refresh"
+macro wind3d  Z "zoom 2.0 1 rel"
+macro wind3d  z "zoom 0.5 1 rel"
+macro wind3d  1 "view 0 10 0 rel"
+macro wind3d  2 "view 0 -10 0 rel"
+macro wind3d  3 "view 10 0 0 rel"
+macro wind3d  4 "view -10 0 0 rel"
+macro wind3d  5 "view 0 0 10 rel"
+macro wind3d  6 "view 0 0 -10 rel"
+macro wind3d  7 "view 0 1 0 rel"
+macro wind3d  8 "view 0 -1 0 rel"
+macro wind3d  9 "view 1 0 0 rel"
+macro wind3d  0 "view -1 0 0 rel"
+macro wind3d  XK_Up "scroll 0 -0.25 0 rel"
+macro wind3d  XK_Down "scroll 0 0.25 0 rel"
+macro wind3d  XK_Left "scroll 0.25 0 0 rel"
+macro wind3d  XK_Right "scroll -0.25 0 0 rel"
+macro wind3d  XK_minus "view 0 0 1 rel"
+macro wind3d  XK_equal "view 0 0 -1 rel"
+macro wind3d  XK_greater "zoom 1 2.0 rel"
+macro wind3d  XK_less "zoom 1 0.5 rel"
+#
+# Load basic set of fonts
+#
+setlabel font FreeSans.pt3 0.58
+setlabel font FreeSerif.pt3 0.58
+setlabel font FreeMono.pt3 0.6
+#
+# Additions for Tcl GUI wrapper
+#
+magic::suspendout
+if {![catch {set Opts(tools)}]} { magic::enable_tools }
+set GND "gnd!"
+set VDD "vdd!"
+magic::resumeout
+catch {source ${CAD_ROOT}/magic/sys/site.def}
+
+# load bind keys (optional)
+# source $env(PDK_ROOT)/gf180mcuD/libs.tech/magic/gf180mcuD-BindKeys

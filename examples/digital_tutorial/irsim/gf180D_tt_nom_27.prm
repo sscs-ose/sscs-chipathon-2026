@@ -1,0 +1,68 @@
+;
+; configuration file for gf180 (0.18um process)
+;
+
+lambda  0.005 ; length scaling, microns (1 lambda = 1 centimicron)
+
+capga   .00832 ; gate capacitance, pF/micron^2
+
+capda 0.0012
+capdp 0.0013
+cappda 0.00260
+cappdp 0.00090
+
+lowthresh  0.5  ; logic low threshold as a normalized voltage
+highthresh 0.5  ; logic high threshold as a normalized voltage
+
+cntpullup 0     ; irrelevant, cmos technology; no depletion transistors
+diffperim 0     ; don't include diffusion perimeters for sidewall cap.
+subparea 0      ; poly over transistor won't count as part pf bulk-poly cap.
+diffext  0      ; diffusion extension for each transistor
+
+device nfet nfet_03v3
+device pfet pfet_03v3
+
+; Capacitor values are in pF/centimicron^2
+;device capacitor sky130_fd_pr__cap_mim_m3_1 2.0E-7
+;device capacitor sky130_fd_pr__cap_mim_m3_2 2.0E-7
+
+; Resistor values are in ohms/square
+
+; Diode
+
+; Transistor device parameters
+;
+
+lambda 20 ; length scaling, microns (1 lambda = 1 centimicron)
+
+capga   .00832 ; gate capacitance, pF/micron^2
+
+capda 0.0012
+capdp 0.0013
+cappda 0.00260
+cappdp 0.00090
+
+lowthresh  0.5  ; logic low threshold as a normalized voltage
+highthresh 0.5  ; logic high threshold as a normalized voltage
+
+cntpullup 0     ; irrelevant, cmos technology; no depletion transistors
+diffperim 0     ; don't include diffusion perimeters for sidewall cap.
+subparea 0      ; poly over transistor won't count as part pf bulk-poly cap.
+diffext  0      ; diffusion extension for each transistor
+
+; Capacitor values are in pF/centimicron^2
+
+; Resistor values are in ohms/square
+
+; Diode
+
+; Transistor device parameters
+
+resistance nfet_03v3 dynamic-high   1.0    0.15  9.114628e+03
+resistance nfet_03v3 dynamic-low    1.0    0.15  2.018281e+03
+resistance nfet_03v3 static         1.0    0.15  3.649577e+03
+
+resistance pfet_03v3 dynamic-high   1.0    0.15  6.155554e+03
+resistance pfet_03v3 dynamic-low    1.0    0.15  1.775042e+03
+resistance pfet_03v3 static         1.0    0.15  2.240383e+03
+

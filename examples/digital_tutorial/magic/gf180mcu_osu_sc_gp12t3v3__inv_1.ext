@@ -1,0 +1,23 @@
+timestamp 1772989189
+version 8.3
+tech gf180mcuD
+style ngspice()
+scale 1000 1 5
+resistclasses 1000000 3250000 6300 7000 6300 7000 7300 1000000 60000 185000 60000 185000 6300 7000 6300 7000 6800 7300 350000 310000 1000000 90 90 90 90 40
+parameters nfet_03v3_dss l=l w=w a1=as p1=ps a2=ad p2=pd l1=s_sab l2=d_sab
+parameters nfet_03v3 l=l w=w a1=as p1=ps a2=ad p2=pd
+parameters pfet_03v3_dss l=l w=w a1=as p1=ps a2=ad p2=pd l1=s_sab l2=d_sab
+parameters pfet_03v3 l=l w=w a1=as p1=ps a2=ad p2=pd
+port "Y" 2 35 105 35 105 m2
+port "A" 1 14 77 14 77 m2
+port "VDD" 3 14 160 14 160 m1
+port "VSS" 4 13 7 13 7 m1
+node "Y" 37 574.23 35 105 m2 0 0 0 0 170 54 340 88 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 700 284 80 36 0 0 0 0 0 0
+node "A" 176 708.533 14 77 m2 0 0 0 0 0 0 0 0 0 0 0 0 921 310 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 60 32 80 36 0 0 0 0 0 0
+node "VDD" 1341 1186 14 160 m1 3136 226 0 0 135 48 340 88 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 793 204 0 0 0 0 0 0 0 0
+substrate "VSS" 0 0 13 7 m1 0 0 0 0 170 54 135 48 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 708 170 0 0 0 0 0 0 0 0
+cap "Y" "VDD" 205.275
+cap "A" "Y" 84.0971
+cap "A" "VDD" 137.475
+device msubckt nfet_03v3 19 19 20 20 l=6 w=17 "VSS" "A" 12 0 "VSS" 17 170,54 "Y" 17 170,54
+device msubckt pfet_03v3 19 115 20 116 l=6 w=34 "VDD" "A" 12 0 "VDD" 34 340,88 "Y" 34 340,88
