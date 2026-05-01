@@ -26,6 +26,7 @@ sudo make install
 - test_inv_1.sp
 
 ## Running
+The `$PDK_ROOT` environment variable must be set prior to running the `ngspice` file. You may run the SPICE simulation using the command found below:
 
 ```bash
 ngspice test_inv_1.sp
