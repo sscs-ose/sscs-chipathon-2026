@@ -2,7 +2,7 @@
   <title>Host / container / bind-mount model for the chipathon examples</title>
   <desc>
     All examples run inside a single long-lived docker container
-    (hpretl/iic-osic-tools:next, named `gf180`). The host's
+    (hpretl/iic-osic-tools:chipathon26, named `gf180`). The host's
     `~/eda/designs` is bind-mounted at `/foss/designs`; artifacts
     survive `docker rm`. Every command flows through `docker exec
     gf180 bash -lc ...`.
@@ -67,7 +67,7 @@
   <!-- Container side -->
   <rect class="container" x="640" y="90" width="420" height="400" rx="8"/>
   <text class="label-big" x="655" y="115">Container `gf180`</text>
-  <text class="sub"        x="655" y="132">hpretl/iic-osic-tools:next   (~15 GB one-time pull)</text>
+  <text class="sub"        x="655" y="132">hpretl/iic-osic-tools:chipathon26   (~15 GB one-time pull)</text>
 
   <text class="label" x="655" y="165">Bind-mounted workspace:</text>
   <text class="kv"    x="655" y="183">/foss/designs/</text>

@@ -1,7 +1,7 @@
 # Container setup
 
 Every example in this repo assumes one long-lived Docker container
-called `gf180`, running the `hpretl/iic-osic-tools:next` image, with
+called `gf180`, running the `hpretl/iic-osic-tools:chipathon26` image, with
 the host workspace `~/eda/designs` bind-mounted inside the container
 at `/foss/designs`. This document shows how to get there and how to
 troubleshoot the common failure modes.
@@ -19,7 +19,7 @@ After that, open any notebook under `examples/` and go.
 
 ```bash
 # 1. Pull the image (~15 GB, one-time)
-docker pull hpretl/iic-osic-tools:next
+docker pull hpretl/iic-osic-tools:chipathon26
 
 # 2. Make sure the host workspace exists.
 mkdir -p ~/eda/designs
@@ -28,7 +28,7 @@ mkdir -p ~/eda/designs
 docker run -d --name gf180 \
     -v ~/eda/designs:/foss/designs:rw \
     --user $(id -u):$(id -g) \
-    hpretl/iic-osic-tools:next \
+    hpretl/iic-osic-tools:chipathon26 \
     --skip sleep infinity
 ```
 
@@ -79,7 +79,7 @@ docker exec gf180 bash -lc '
 ```bash
 docker stop gf180            # stops but keeps the container (and any state in /tmp inside)
 docker rm gf180              # removes the container entirely
-docker image rm hpretl/iic-osic-tools:next   # reclaim ~15 GB
+docker image rm hpretl/iic-osic-tools:chipathon26   # reclaim ~15 GB
 ```
 
 Host artifacts under `~/eda/designs` survive all of the above.
@@ -107,7 +107,7 @@ LibreLane. If you drive LibreLane yourself, do the same, plus set
 I/O cells (notebooks 02, 03, 04).
 
 **`sak-pdk-script.sh: command not found`** - you are inside a different
-image than `hpretl/iic-osic-tools:next`. That helper ships with the
+image than `hpretl/iic-osic-tools:chipathon26`. That helper ships with the
 image; if it is missing you are not in the right container.
 
 **Render PNG blank** - headless KLayout PNG export sometimes fights

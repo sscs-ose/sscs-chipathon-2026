@@ -4,7 +4,7 @@ Per-artifact attribution for this repository.
 
 ## Container, tool stack, PDK
 
-**IIC / JKU Linz** - `hpretl/iic-osic-tools:next` Docker image bundles
+**IIC / JKU Linz** - `hpretl/iic-osic-tools:chipathon26` Docker image bundles
 LibreLane, Yosys, OpenROAD, Magic, KLayout, Netgen, Icarus Verilog,
 Verilator, cocotb, ciel, and sak-pdk-script.sh. The GF180MCU PDK is
 installed at `/foss/pdks/gf180mcuD/` by `ciel`. The wafer-space
