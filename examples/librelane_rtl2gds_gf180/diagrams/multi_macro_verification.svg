@@ -198,7 +198,7 @@
   <path class="rail-arrow" d="M385,410 L385,440"/>
 
   <!-- rail caption -->
-  <text class="tool" x="770" y="403" text-anchor="middle">.gds / .lef / .lib / .nl.v of each macro feed chip_top_multi_patch.yaml MACROS:</text>
+  <text class="tool" x="770" y="403" text-anchor="middle">.gds / .lef / .lib / .nl.v of each macro feed the chip-top MACROS: dict</text>
 
   <!-- ============================================================ -->
   <!-- LEGEND (moved below all tracks; viewBox grew to 660)          -->

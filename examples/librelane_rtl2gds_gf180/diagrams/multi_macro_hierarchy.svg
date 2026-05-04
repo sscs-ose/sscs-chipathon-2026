@@ -108,7 +108,7 @@
   <text class="sub" x="430" y="546">[19:17] = 0 (reserved)</text>
   <text class="sub" x="615" y="546" fill="#888" font-style="italic">chip_core_multi.sv</text>
   <line x1="160" y1="556" x2="740" y2="556" stroke="#ccc" stroke-width="1"/>
-  <text class="sub" x="160" y="572" font-weight="bold">Integration via MACROS: in chip_top_multi_patch.yaml</text>
+  <text class="sub" x="160" y="572" font-weight="bold">Integration via MACROS: dict in chip-top librelane/config.yaml</text>
   <text class="sub" x="160" y="582" font-style="italic" fill="#666">
     pulls each macro's .nl.v + .lef + .lib (x9 corners) + .gds
   </text>

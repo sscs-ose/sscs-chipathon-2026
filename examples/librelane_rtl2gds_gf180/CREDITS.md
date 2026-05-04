@@ -55,7 +55,6 @@ Files:
 - `examples/04_counter_alu_multimacro/tb/Makefile(.cocotb)`
 - `examples/04_counter_alu_multimacro/librelane/counter_macro.yaml`
 - `examples/04_counter_alu_multimacro/librelane/alu_macro.yaml`
-- `examples/04_counter_alu_multimacro/librelane/chip_top_multi_patch.yaml`
 - `examples/04_counter_alu_multimacro/04_counter_alu_multimacro.ipynb`
 
 ## Diagrams (SVG)

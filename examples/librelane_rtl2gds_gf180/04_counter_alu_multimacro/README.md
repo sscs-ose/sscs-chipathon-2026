@@ -29,8 +29,7 @@ Verification chain the notebook walks end to end:
 |   `-- test_alu_macro.py              # 3 cocotb tests on the registered ALU wrapper
 `-- librelane/
     |-- counter_macro.yaml             # Classic flow config for counter
-    |-- alu_macro.yaml                 # Classic flow config for alu_macro
-    `-- chip_top_multi_patch.yaml      # reference shape of the chip-top patch
+    `-- alu_macro.yaml                 # Classic flow config for alu_macro
 ```
 
 ## What the example demonstrates

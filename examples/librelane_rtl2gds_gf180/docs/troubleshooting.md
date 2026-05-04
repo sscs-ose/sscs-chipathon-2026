@@ -88,7 +88,7 @@ posedge. `test_alu_macro.py` does this at every iteration.
 **`'MACROS.counter.lib.*[0]' invalid: '.../counter.lib' does not
 exist`**. The `--save-views-to` directory holds `lib/<corner>/<name>__
 <corner>.lib`, not a single `<name>.lib`. Build a full 9-entry
-`{corner: [path]}` map (see `librelane/chip_top_multi_patch.yaml`).
+`{corner: [path]}` map (see `patch_top()` in the notebook for the canonical builder).
 
 **`Refusing to automatically convert value at
 'PDN_MACRO_CONNECTIONS[0]' to a string`**. `PDN_MACRO_CONNECTIONS` is

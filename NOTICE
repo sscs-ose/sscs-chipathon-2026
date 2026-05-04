@@ -19,7 +19,7 @@ Repository-specific material (Apache-2.0):
     rtl/{counter,alu,alu_macro,chip_core_multi}.sv,
     tb/{Makefile,Makefile.cocotb,timescale.v,
          test_counter.py,test_alu.py,test_alu_macro.py},
-    librelane/{counter_macro,alu_macro,chip_top_multi_patch}.yaml,
+    librelane/{counter_macro,alu_macro}.yaml,
     04_counter_alu_multimacro.ipynb
   - diagrams/*.svg + *.png                         authored 2026-04
   - docs/{container_setup,troubleshooting,reading_order}.md
