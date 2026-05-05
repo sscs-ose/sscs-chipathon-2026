@@ -1,0 +1,32 @@
+# Standalone hardening config for the counter macro.
+# Runs the LibreLane Classic flow against rtl/counter.sv, producing the
+# GDS / LEF / Liberty / Verilog netlist views that chip_top_multi
+# later pulls in under `MACROS:`.
+
+meta:
+  version: 3
+  flow: Classic
+
+DESIGN_NAME: counter
+
+VERILOG_FILES:
+  - dir::../rtl/counter.sv
+
+# Single-clock 8-bit register. Match the template's 25 MHz.
+CLOCK_PORT: clk
+CLOCK_NET: clk
+CLOCK_PERIOD: 40   # ns
+
+# Small block -- let LibreLane size the die from utilisation.
+FP_SIZING: relative
+FP_CORE_UTIL: 30
+PL_TARGET_DENSITY_PCT: 55
+
+# Area-first synthesis (the counter is tiny, we do not need effort).
+SYNTH_STRATEGY: "AREA 0"
+
+# Route-routeability knob for very small designs.
+GRT_ALLOW_CONGESTION: true
+
+# Per-macro DRC / LVS stays enabled; they are cheap on a block this
+# small and give a green baseline before integration.

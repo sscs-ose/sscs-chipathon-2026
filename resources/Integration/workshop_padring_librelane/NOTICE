@@ -1,0 +1,52 @@
+chipathon-2026-gf180mcu-padring
+Copyright 2026 Mauricio Montanares
+
+This product includes software developed by third parties:
+
+1. wafer-space / gf180mcu-project-template
+   Copyright 2025 Leo Moser <leo.moser@pm.me> and contributors
+   Licensed under the Apache License, Version 2.0.
+   Source: https://github.com/wafer-space/gf180mcu-project-template
+   Pinned at commit 8bd0f6ff28947bf222c5288343f8f3ee1fc04632
+   (2026-03-26, "chore: update flake to librelane 3.0").
+
+   This repository is a fork of the above. All files not listed in
+   the "Fork-specific additions" section below are taken verbatim
+   from that upstream, and their copyright remains with Leo Moser
+   and the wafer-space contributors.
+
+2. JuanMoya / padring_gf180
+   Copyright 2025 Juan Moya
+   Licensed under the Apache License, Version 2.0.
+   Source: https://github.com/JuanMoya/padring_gf180
+   Referenced file: Workshop_CASS/padring/workshop_padring.cfg
+
+   The workshop pad layout in `librelane/slots/slot_workshop.yaml`
+   is a port of that configuration file from the standalone padring
+   tool into a LibreLane slot definition. The pad ordering (60
+   analog + 20 bidir + 4/4 DVDD/DVSS + clk + rst_n + corners) and
+   the die size (2935 × 2935 µm) follow Juan Moya's design; the
+   LibreLane-specific encoding is ours.
+
+Fork-specific additions
+-----------------------
+The following files were added or modified by this fork:
+
+- src/slot_defines.svh                  (modified: SLOT_WORKSHOP)
+- src/chip_core.sv                      (modified: 20-bit counter)
+- librelane/config.yaml                 (modified: drop SRAM MACROS)
+- librelane/pdn_cfg.tcl                 (modified: drop SRAM PDN)
+- librelane/slots/slot_workshop.yaml    (new)
+- Makefile                              (modified: AVAILABLE_SLOTS)
+- README.md                             (replaced, chipathon-focused)
+- NOTICE                                (new)
+- CREDITS.md                            (new)
+- AUTHORS.md                            (appended)
+- docs/                                 (new)
+- examples/                             (new)
+- scripts/verify_workshop_slot.sh       (new)
+- scripts/run_docker_iic.sh             (new)
+
+Those additions are copyright 2026 Mauricio Montanares and released
+under the Apache License, Version 2.0, the same license as the
+upstream work.

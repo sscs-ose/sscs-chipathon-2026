@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 570" font-family="Helvetica,Arial,sans-serif">
+  <title>Anatomy of a LibreLane slot in the wafer-space template</title>
+  <desc>
+    The three files that, together, define one slot (1x1 / 0p5x1 /
+    1x0p5 / 0p5x0p5 / workshop). Adding a new slot = writing this
+    triple.
+  </desc>
+
+  <style>
+    .title      { font-size:22px; fill:#111; text-anchor:middle; font-weight:bold; }
+    .subtitle   { font-size:14px; fill:#444; text-anchor:middle; font-style:italic; }
+    .file-frame { fill:#f7f7f9; stroke:#333; stroke-width:1.5; }
+    .file-name  { font-size:15px; fill:#003b73; font-family:monospace; font-weight:bold; }
+    .file-role  { font-size:13px; fill:#555; font-style:italic; }
+    .code       { font-size:13px; fill:#111; font-family:monospace; }
+    .bullet     { font-size:13px; fill:#222; }
+    .arrow      { fill:none; stroke:#b00; stroke-width:1.8; marker-end:url(#arrowhead); }
+    .caption    { font-size:14px; fill:#333; }
+    .footer     { font-size:11px; fill:#777; text-anchor:middle; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L0,10 L9,5 z" fill="#b00"/>
+    </marker>
+  </defs>
+
+  <!-- header -->
+  <text class="title"    x="500" y="30">Anatomy of the slot triple</text>
+  <text class="subtitle" x="500" y="52">Three files that, together, define one wafer-space slot. Write the triple -&gt; you have a new slot.</text>
+
+  <!-- File 1: slot_defines.svh -->
+  <rect class="file-frame" x="30" y="90" width="300" height="390" rx="6"/>
+  <text class="file-name"  x="45" y="115">src/slot_defines.svh</text>
+  <text class="file-role"  x="45" y="133">per-slot pad counts (parameters)</text>
+  <text class="code"       x="45" y="170">`ifdef SLOT_WORKSHOP</text>
+  <text class="code"       x="45" y="190">`define NUM_DVDD_PADS    4</text>
+  <text class="code"       x="45" y="210">`define NUM_DVSS_PADS    4</text>
+  <text class="code"       x="45" y="230">`define NUM_INPUT_PADS   1</text>
+  <text class="code"       x="45" y="250">`define NUM_BIDIR_PADS  20</text>
+  <text class="code"       x="45" y="270">`define NUM_ANALOG_PADS 60</text>
+  <text class="code"       x="45" y="290">`endif</text>
+  <text class="bullet"     x="45" y="340">Parameters that flow into</text>
+  <text class="bullet"     x="45" y="358">chip_top.sv's generate loops</text>
+  <text class="bullet"     x="45" y="376">and bind chip_core's ports.</text>
+  <text class="bullet"     x="45" y="420" font-style="italic">If this file is missing</text>
+  <text class="bullet"     x="45" y="438" font-style="italic">a parameter for your slot,</text>
+  <text class="bullet"     x="45" y="456" font-style="italic">Verilog elaboration fails.</text>
+
+  <!-- File 2: slot_*.yaml -->
+  <rect class="file-frame" x="355" y="90" width="320" height="390" rx="6"/>
+  <text class="file-name"  x="370" y="115">librelane/slots/slot_&lt;name&gt;.yaml</text>
+  <text class="file-role"  x="370" y="133">die size + pad order per edge</text>
+  <text class="code"       x="370" y="170">FP_SIZING: absolute</text>
+  <text class="code"       x="370" y="190">DIE_AREA:  [0, 0, 2935, 2935]</text>
+  <text class="code"       x="370" y="210">CORE_AREA: [442, 442, 2493, 2493]</text>
+  <text class="code"       x="370" y="230">VERILOG_DEFINES: [SLOT_WORKSHOP]</text>
+  <text class="code"       x="370" y="260">PAD_SOUTH: [</text>
+  <text class="code"       x="370" y="278">  clk_pad, rst_n_pad,</text>
+  <text class="code"       x="370" y="296">  "inputs[0].pad",</text>
+  <text class="code"       x="370" y="314">  "analog[28].pad", ... ]</text>
+  <text class="code"       x="370" y="342">PAD_EAST:  [ ... ]</text>
+  <text class="code"       x="370" y="360">PAD_NORTH: [ ... ]</text>
+  <text class="code"       x="370" y="378">PAD_WEST:  [ ... ]</text>
+  <text class="bullet"     x="370" y="420" font-style="italic">LibreLane reads lists CW</text>
+  <text class="bullet"     x="370" y="438" font-style="italic">from SW corner.</text>
+  <text class="bullet"     x="370" y="456" font-style="italic">PAD_NORTH and PAD_WEST may</text>
+  <text class="bullet"     x="370" y="474" font-style="italic">look reversed vs a catalog.</text>
+
+  <!-- File 3: Makefile -->
+  <rect class="file-frame" x="700" y="90" width="270" height="390" rx="6"/>
+  <text class="file-name"  x="715" y="115">Makefile</text>
+  <text class="file-role"  x="715" y="133">registers the slot as a target</text>
+  <text class="code"       x="715" y="170">AVAILABLE_SLOTS = \</text>
+  <text class="code"       x="715" y="190">  1x1 0p5x1 1x0p5 \</text>
+  <text class="code"       x="715" y="210">  0p5x0p5 workshop</text>
+  <text class="code"       x="715" y="238">DEFAULT_SLOT = 1x1</text>
+  <text class="bullet"     x="715" y="290">One string in one list.</text>
+  <text class="bullet"     x="715" y="310">Enables</text>
+  <text class="code"       x="715" y="330">make librelane SLOT=...</text>
+  <text class="bullet"     x="715" y="378">The existing rule already</text>
+  <text class="bullet"     x="715" y="396">invokes:</text>
+  <text class="code"       x="715" y="418">librelane \</text>
+  <text class="code"       x="715" y="434">  slots/slot_$(SLOT).yaml \</text>
+  <text class="code"       x="715" y="450">  librelane/config.yaml</text>
+
+  <!-- flow arrow: anatomy -> make target. Bigger and pointed at the
+       caption so the visual reading order stays top-to-bottom. -->
+  <path class="arrow" d="M500,492 L500,510"/>
+  <text class="caption" x="500" y="528" text-anchor="middle" font-weight="bold" fill="#b00">
+    -&gt; SLOT=workshop make librelane  (stock Makefile, no other edits)
+  </text>
+
+  <text class="footer" x="500" y="555" text-anchor="middle">chipathon-gf180mcu-librelane-examples - diagrams/slot_anatomy.svg</text>
+</svg>

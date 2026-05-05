@@ -1,0 +1,154 @@
+# Chipathon 2026 workshop padring slot.
+#
+# Mirrors https://github.com/JuanMoya/padring_gf180 (Workshop_CASS/padring/workshop_padring.cfg).
+# That config targets the stand-alone `padring` tool; this YAML is the
+# LibreLane-native equivalent, usable with the wafer-space
+# `gf180mcu-project-template`.
+#
+# Die:    2935 x 2935 um (same as JuanMoya).
+# Pads:   60 analog (gf180mcu_fd_io__asig_5p0)
+#       + 20 bidir   (gf180mcu_fd_io__bi_24t; JuanMoya uses bi_t)
+#       + 4  dvdd    (gf180mcu_ws_io__dvdd;  JuanMoya uses gf180mcu_fd_io__dvdd)
+#       + 4  dvss    (gf180mcu_ws_io__dvss;  JuanMoya uses gf180mcu_fd_io__dvss)
+#       + 2  hardcoded input cells (clk_pad = gf180mcu_fd_io__in_s,
+#                                  rst_n_pad = gf180mcu_fd_io__in_c)
+#       + 4  corners (gf180mcu_fd_io__cor, generated automatically).
+#
+# Index mapping (generate loops in chip_top.sv):
+#   analog[i].pad        = ana<i+1>     (so analog[0] = ana1, analog[59] = ana60)
+#   bidir[i].pad         = config<i+1>  (bidir[0] = config1, bidir[19] = config20)
+#   dvdd_pads[0..3].pad  = vdd_ana1 (N), vdd_dig1 (E), vdd_ana2 (S), vdd_dig4 (W)
+#   dvss_pads[0..3].pad  = vss_ana1 (N), vss_dig2 (E), vss_ana2 (S), vss_dig3 (W)
+
+# Floorplanning
+FP_SIZING: absolute
+# Keep ~442 um of padring/sealring ring around the core, matching the
+# other slots.  Core area is 2051 x 2051 um.
+DIE_AREA:  [0, 0, 2935, 2935]
+CORE_AREA: [442, 442, 2493, 2493]
+
+VERILOG_DEFINES: ["SLOT_WORKSHOP"]
+
+# Pad lists read clockwise from the south-west corner.
+# clk_pad and rst_n_pad are stock single-instance inputs in
+# chip_top.sv and sit at the start of the south edge (nearest SW),
+# as in slot_1x1.
+
+# ----- South: SW -> SE (24 pads) -----
+PAD_SOUTH: [
+    clk_pad,
+    rst_n_pad,
+    "inputs\\[0\\].pad",
+
+    "analog\\[28\\].pad",
+    "analog\\[29\\].pad",
+    "analog\\[30\\].pad",
+    "analog\\[31\\].pad",
+    "analog\\[32\\].pad",
+    "analog\\[33\\].pad",
+    "analog\\[34\\].pad",
+    "analog\\[35\\].pad",
+    "analog\\[36\\].pad",
+    "analog\\[37\\].pad",
+
+    "dvdd_pads\\[2\\].pad",
+    "dvss_pads\\[2\\].pad",
+
+    "analog\\[38\\].pad",
+    "analog\\[39\\].pad",
+    "analog\\[40\\].pad",
+    "analog\\[41\\].pad",
+    "analog\\[42\\].pad",
+    "analog\\[43\\].pad",
+    "analog\\[44\\].pad",
+    "analog\\[45\\].pad",
+    "analog\\[46\\].pad",
+    "analog\\[47\\].pad",
+]
+
+# ----- East: SE -> NE (22 pads) -----
+PAD_EAST: [
+    "analog\\[27\\].pad",
+    "analog\\[26\\].pad",
+    "analog\\[25\\].pad",
+    "analog\\[24\\].pad",
+    "analog\\[23\\].pad",
+    "analog\\[22\\].pad",
+    "analog\\[21\\].pad",
+    "analog\\[20\\].pad",
+    "analog\\[19\\].pad",
+    "analog\\[18\\].pad",
+
+    "dvss_pads\\[1\\].pad",
+    "dvdd_pads\\[1\\].pad",
+
+    "bidir\\[11\\].pad",
+    "bidir\\[10\\].pad",
+    "bidir\\[9\\].pad",
+    "bidir\\[8\\].pad",
+    "bidir\\[7\\].pad",
+    "bidir\\[6\\].pad",
+    "bidir\\[5\\].pad",
+    "bidir\\[4\\].pad",
+
+    "analog\\[17\\].pad",
+    "analog\\[16\\].pad",
+]
+
+# ----- North: NE -> NW (22 pads; reversed relative to JuanMoya's N listing) -----
+PAD_NORTH: [
+    "bidir\\[3\\].pad",
+    "bidir\\[2\\].pad",
+    "bidir\\[1\\].pad",
+    "bidir\\[0\\].pad",
+
+    "analog\\[15\\].pad",
+    "analog\\[14\\].pad",
+    "analog\\[13\\].pad",
+    "analog\\[12\\].pad",
+    "analog\\[11\\].pad",
+    "analog\\[10\\].pad",
+
+    "dvss_pads\\[0\\].pad",
+    "dvdd_pads\\[0\\].pad",
+
+    "analog\\[9\\].pad",
+    "analog\\[8\\].pad",
+    "analog\\[7\\].pad",
+    "analog\\[6\\].pad",
+    "analog\\[5\\].pad",
+    "analog\\[4\\].pad",
+    "analog\\[3\\].pad",
+    "analog\\[2\\].pad",
+    "analog\\[1\\].pad",
+    "analog\\[0\\].pad",
+]
+
+# ----- West: NW -> SW (22 pads; reversed relative to JuanMoya's W listing) -----
+PAD_WEST: [
+    "analog\\[59\\].pad",
+    "analog\\[58\\].pad",
+
+    "bidir\\[12\\].pad",
+    "bidir\\[13\\].pad",
+    "bidir\\[14\\].pad",
+    "bidir\\[15\\].pad",
+    "bidir\\[16\\].pad",
+    "bidir\\[17\\].pad",
+    "bidir\\[18\\].pad",
+    "bidir\\[19\\].pad",
+
+    "dvdd_pads\\[3\\].pad",
+    "dvss_pads\\[3\\].pad",
+
+    "analog\\[57\\].pad",
+    "analog\\[56\\].pad",
+    "analog\\[55\\].pad",
+    "analog\\[54\\].pad",
+    "analog\\[53\\].pad",
+    "analog\\[52\\].pad",
+    "analog\\[51\\].pad",
+    "analog\\[50\\].pad",
+    "analog\\[49\\].pad",
+    "analog\\[48\\].pad",
+]

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 360" font-family="Helvetica,Arial,sans-serif">
+  <title>RTL-to-GDS pipeline on GF180MCU with LibreLane</title>
+  <desc>
+    Pipeline of tools LibreLane orchestrates to turn RTL into a
+    manufacturable GDSII layout. Each box is a distinct open-source
+    EDA project; the dashed outer frame highlights LibreLane as the
+    orchestrator. STA runs at multiple checkpoints (post-synth,
+    post-CTS, post-route, signoff) but only the signoff pass writes to
+    final/metrics.csv.
+  </desc>
+
+  <style>
+    .stage-box   { fill:#f7f7f9; stroke:#333; stroke-width:1.5; }
+    .signoff-box { fill:#fff3e0; stroke:#b26500; stroke-width:1.5; }
+    .endpoint    { fill:#e6f2ff; stroke:#003b73; stroke-width:1.5; }
+    .orchestrator-frame { fill:none; stroke:#b00; stroke-width:1.8; stroke-dasharray:6,4; }
+    .label       { font-size:14px; fill:#111; text-anchor:middle; }
+    .sublabel    { font-size:11px; fill:#555; text-anchor:middle; }
+    .title       { font-size:20px; fill:#111; text-anchor:middle; font-weight:bold; }
+    .caption     { font-size:12px; fill:#333; text-anchor:middle; font-style:italic; }
+    .arrow       { fill:none; stroke:#555; stroke-width:2; marker-end:url(#arrow); }
+    .frame-label { font-size:12px; fill:#b00; text-anchor:middle; font-weight:bold; }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L0,10 L9,5 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- title -->
+  <text class="title" x="600" y="30">RTL to GDS on GF180MCU</text>
+  <text class="caption" x="600" y="52">LibreLane orchestrates five upstream tools; one YAML, one command.</text>
+
+  <!-- orchestrator frame around the synth..signoff band. The frame
+       label sits clearly above the frame border so it does not crowd
+       the boxes inside. -->
+  <rect class="orchestrator-frame" x="150" y="120" width="950" height="130" rx="10"/>
+  <text class="frame-label" x="625" y="98">LibreLane Classic or Chip flow</text>
+
+  <!-- RTL endpoint -->
+  <rect class="endpoint" x="20"  y="150" width="110" height="60" rx="6"/>
+  <text class="label"    x="75"  y="178">RTL</text>
+  <text class="sublabel" x="75"  y="196">.sv / .v</text>
+
+  <!-- Synthesis -->
+  <rect class="stage-box" x="170" y="150" width="125" height="60" rx="6"/>
+  <text class="label"     x="232" y="178">Synthesis</text>
+  <text class="sublabel"  x="232" y="196">Yosys</text>
+
+  <!-- Floorplan + PDN (PDN demoted from a top-level peer stage to a
+       sub-step inside Floorplan, matching its weight in Classic flow) -->
+  <rect class="stage-box" x="305" y="150" width="135" height="60" rx="6"/>
+  <text class="label"     x="372" y="176">Floorplan</text>
+  <text class="sublabel"  x="372" y="194">OpenROAD  (incl. PDN)</text>
+
+  <!-- Placement -->
+  <rect class="stage-box" x="450" y="150" width="125" height="60" rx="6"/>
+  <text class="label"     x="512" y="178">Placement</text>
+  <text class="sublabel"  x="512" y="196">OpenROAD</text>
+
+  <!-- CTS -->
+  <rect class="stage-box" x="585" y="150" width="115" height="60" rx="6"/>
+  <text class="label"     x="642" y="178">CTS</text>
+  <text class="sublabel"  x="642" y="196">OpenROAD</text>
+
+  <!-- Routing -->
+  <rect class="stage-box" x="710" y="150" width="125" height="60" rx="6"/>
+  <text class="label"     x="772" y="178">Routing</text>
+  <text class="sublabel"  x="772" y="196">OpenROAD  (global+detail)</text>
+
+  <!-- STA (multi-corner; runs at every checkpoint, signoff is the
+       final pass that lands in metrics.csv) -->
+  <rect class="stage-box" x="845" y="150" width="115" height="60" rx="6"/>
+  <text class="label"     x="902" y="178">STA</text>
+  <text class="sublabel"  x="902" y="196">OpenSTA  (3 corners)</text>
+
+  <!-- Signoff (DRC + LVS + antenna + GDS streamout, all by KLayout
+       except Magic DRC which is the gf180 DRC engine of record) -->
+  <rect class="signoff-box" x="970" y="150" width="125" height="60" rx="6"/>
+  <text class="label"       x="1032" y="176">Signoff</text>
+  <text class="sublabel"    x="1032" y="194">Magic DRC + Netgen LVS</text>
+
+  <!-- GDS endpoint -->
+  <rect class="endpoint" x="1115" y="150" width="80" height="60" rx="6"/>
+  <text class="label"    x="1155" y="178">GDS</text>
+  <text class="sublabel" x="1155" y="196">final/gds/*.gds</text>
+
+  <!-- arrows between stages -->
+  <path class="arrow" d="M130,180 L170,180"/>
+  <path class="arrow" d="M295,180 L305,180"/>
+  <path class="arrow" d="M440,180 L450,180"/>
+  <path class="arrow" d="M575,180 L585,180"/>
+  <path class="arrow" d="M700,180 L710,180"/>
+  <path class="arrow" d="M835,180 L845,180"/>
+  <path class="arrow" d="M960,180 L970,180"/>
+  <path class="arrow" d="M1095,180 L1115,180"/>
+
+  <!-- signoff breakdown (matches gf180mcuD config in examples/01_*:
+       meta.substituting_steps.KLayout.DRC: null, RUN_MAGIC_STREAMOUT=false;
+       KLayout writes the GDS, Magic does the DRC, Netgen does LVS, KLayout antenna). -->
+  <text class="sublabel" x="600" y="288" font-size="13" fill="#333" text-anchor="middle">
+    Signoff = Magic DRC + Netgen LVS + KLayout antenna + KLayout streamout (final GDS)
+  </text>
+  <text class="sublabel" x="600" y="306" font-size="13" fill="#333" text-anchor="middle">
+    Note: KLayout DRC ships no runset for gf180mcuD and is gated off (meta.substituting_steps.KLayout.DRC: null).
+  </text>
+  <text class="sublabel" x="600" y="324" font-size="13" fill="#333" text-anchor="middle">
+    Every metric lands in a single file: final/metrics.csv.
+  </text>
+
+  <!-- footer -->
+  <text class="sublabel" x="600" y="350" font-size="11" fill="#777" text-anchor="middle">
+    chipathon-gf180mcu-librelane-examples - diagrams/flow_rtl2gds.svg
+  </text>
+</svg>
