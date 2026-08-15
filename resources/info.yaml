@@ -18,3 +18,22 @@ project:
   description: "PDK test data"  # Short one-line description
   lvs_config: "<relative-path-to-lvs_config.json>"
 
+pins: 
+  - name: reset_n
+    io_type: input_cmos
+  - name: clock 
+    io_type: input_schmitt
+  - name: gpio0
+    io_type: bidirectional
+  - name: high_drive
+    io_type: bidirectional_24ma
+  - name: sensor
+    io_type: analog
+    secondary_esd: true
+  - name: analog_out
+    io_type: analog
+    secondary_esd: false
+  - name: vdd
+    io_type: power
+  - name: vss
+    io_type: ground  # note: due to a common ground connection, ground pads are generally not needed.
