@@ -39,9 +39,9 @@ This document outlines the official schedule for the SSCS Chipathon 2026 event.
 | Week 30 | July 24 | **Layout Tutorial** 🎓 | • Multi project integration (Kevin/Camilo) | [Watch](https://drive.google.com/file/d/1IAf3W2IWuYzNrSMNgAEH3uIleoFttFvY/view?usp=drive_link) | [View](https://docs.google.com/presentation/d/1VLdZGv5mM02g3VPxl28PMymxcQm1z8lniKxDtyPx3s4/edit?slide=id.p1#slide=id.p1) | closed |
 | Week 31 | July 31 | **Layout Tutorial** | • Layout with Magic (Tim) <Tim> | [Watch](https://us06web.zoom.us/rec/share/lVaD79B6jKntMzZz0C2xVqkWM8nBpbEDJ80HO9V-N553lhdMxdHk4PtrTprP56pN.MzmIbUBbEY1KPKRV) | [View](https://drive.google.com/file/d/1ThvY7gLRgJ4xpwUJcNzq9kU-S7qUDn6j/view?usp=drive_link) | closed |
 | | Aug. 6 | **DRC Dry-run** | System test |  |  |  |  |
-| Week 32 | Aug. 7 | **Layout Review** 🎓 | Sample layout review (Track leads) <br>• PEX and ESD (Juan) | [Watch](https://us06web.zoom.us/rec/share/qWLiUpnli6qmPoZfl0v00WrM5xPhG5q0mpdJCJBO_q74fJ8-iT_WZBLHjqV_52IE.C4dPJJCx3b5r1GJl) | [View](https://docs.google.com/presentation/d/e/2PACX-1vSgM4jEmZZVc_Ugfvpucf_9Q3ZjshnYkhOSNY2Ij0Yr92uAn24Pxv7kgcRpm1LDBw/pub) | [Submit](https://forms.gle/Mod78EMcMEnyDDWj7) |
+| Week 32 | Aug. 7 | **Layout Review** 🎓 | Sample layout review (Track leads) <br>• PEX and ESD (Juan) | [Watch](https://us06web.zoom.us/rec/share/qWLiUpnli6qmPoZfl0v00WrM5xPhG5q0mpdJCJBO_q74fJ8-iT_WZBLHjqV_52IE.C4dPJJCx3b5r1GJl) | [View](https://docs.google.com/presentation/d/e/2PACX-1vSgM4jEmZZVc_Ugfvpucf_9Q3ZjshnYkhOSNY2Ij0Yr92uAn24Pxv7kgcRpm1LDBw/pub) | closed |
 | | Aug. 10 | **Layout reviews due** |  |  |  |  |  |
-| Week 33 | Aug. 14 | **Layout Review (blocks)** 👥 | - |  |  |  |
+| Week 33 | Aug. 14 | **Layout Review (blocks)** 👥 | - | [Watch](https://us06web.zoom.us/rec/share/Mg_P-wWLp9x3jzMtugEtEymm8yqwpq3khrInKVpGH3qZBtqvr8nvAqHmXq2BdcNe.6VoYzwtYRhhxS9lD) | [View](https://docs.google.com/presentation/d/e/2PACX-1vRkx1NHWg3xox0615_BWJWWQnz0gzQK8vJi_DDQ9U0VyBzSXouGzxDDeQcUNQ80pA/pub) | [Submit](https://forms.gle/ytv6YV2bAfUheLri8) |
 | Week 34 | Aug. 21 | **Layout Review (top level)** 👥 | - |  |  |  |
 |  | | **DRC Dry-run GDS to Channel Partner**  | |  |  |  |
 | Week 35 | Aug. 28 | **Verification** 👥 | Secondary ESD (Juan/Luighi) |  |  |  |
