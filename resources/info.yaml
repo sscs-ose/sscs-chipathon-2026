@@ -19,6 +19,8 @@ project:
   lvs_config: "<relative-path-to-lvs_config.json>"
 
 pins: 
+  - name: vss
+    io_type: ground  # the first pin must be a ground connection
   - name: reset_n
     io_type: input_cmos
   - name: clock 
@@ -34,6 +36,4 @@ pins:
     io_type: analog
     secondary_esd: false
   - name: vdd
-    io_type: power
-  - name: vss
-    io_type: ground  # note: due to a common ground connection, ground pads are generally not needed.
+    io_type: power  # subsequent power/ground cells cause a break in the I/O power rails
