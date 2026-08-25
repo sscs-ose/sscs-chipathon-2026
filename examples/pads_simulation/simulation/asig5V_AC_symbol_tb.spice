@@ -1,0 +1,37 @@
+** sch_path: /foss/designs/sscs-chipathon-2025/resources/Integration/Chipathon2025_pads/xschem/asig5V_AC_symbol_tb.sch
+**.subckt asig5V_AC_symbol_tb
+V1 DVDD GND 5
+V2 VDD GND 5
+V3 DVSS GND 0
+V4 VSS GND 0
+V5 net1 GND DC 3 AC 1
+R1 ASIG net1 1k
+* noconn pad
+X1 DVSS DVDD VSS VDD pad ASIG gf180mcu_fd_io__asig_5p0_extracted
+**** begin user architecture code
+
+.include /foss/designs/sscs-chipathon-2025/resources/Integration/Chipathon2025_pads/xschem/gf180mcu_fd_io__asig_5p0_extracted.spice
+
+
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice diode_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice moscap_typical
+
+
+
+.ac dec 100 1k 100G
+.save all
+.control
+run
+display
+plot PAD ASIG
+plot vdb(asig) vdb(pad)
+.endc
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

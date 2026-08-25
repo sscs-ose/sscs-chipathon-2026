@@ -1,0 +1,54 @@
+** sch_path: /foss/designs/sscs-chipathon-2025/resources/Integration/Chipathon2025_pads/xschem/PAD_2ESD_tb.sch
+**.subckt PAD_2ESD_tb
+V1 DVDD GND 5
+V2 VDD GND 5
+V3 DVSS GND 0
+V4 VSS GND 0
+V5 net1 GND DC 3.3 AC 1
+R1 PAD net1 1k
+X1 DVSS DVDD VSS VDD PAD ASIG gf180mcu_fd_io__asig_5p0_extracted
+XIO1 VDD ASIG2 ASIG VSS io_secondary_3p3
+* noconn ASIG2
+**** begin user architecture code
+
+.include /foss/designs/sscs-chipathon-2025/resources/Integration/Chipathon2025_pads/xschem/gf180mcu_fd_io__asig_5p0_extracted.spice
+
+
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice diode_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice moscap_typical
+
+
+
+.ac dec 100 1k 100G
+.save all
+.control
+run
+display
+plot PAD ASIG ASIG2
+plot vdb(asig) vdb(pad) vdb(asig2)
+.endc
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  xschem/symbols/io_secondary_3p3/io_secondary_3p3.sym # of pins=4
+** sym_path: /foss/designs/sscs-chipathon-2025/resources/Integration/Chipathon2025_pads/xschem/symbols/io_secondary_3p3/io_secondary_3p3.sym
+** sch_path: /foss/designs/sscs-chipathon-2025/resources/Integration/Chipathon2025_pads/xschem/symbols/io_secondary_3p3/io_secondary_3p3.sch
+.subckt io_secondary_3p3 VDD to_gate ASIG3V3 VSS
+
+
+*.iopin VSS
+*.iopin VDD
+*.iopin to_gate
+*.iopin ASIG3V3
+XR1 to_gate ASIG3V3 VDD ppolyf_u r_width=16e-6 r_length=4e-6
+D2 VSS to_gate diode_nd2ps_03v3 area='10u * 10u ' pj='2*10u + 2*10u ' m=4
+D1 to_gate VDD diode_pd2nw_03v3 area='10u * 10u ' pj='2*10u + 2*10u ' m=4
+.ends
+
+.GLOBAL GND
+.end

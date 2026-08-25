@@ -1,0 +1,36 @@
+** sch_path: /foss/designs/sscs-chipathon-2025/resources/Integration/Chipathon2025_pads/xschem/asig5V_DC_tb.sch
+**.subckt asig5V_DC_tb
+V1 DVDD GND 5
+V2 VDD GND 5
+V3 DVSS GND 0
+V4 VSS GND 0
+V5 Vin GND PWL(0 0 500n 2.5 1u 5)
+XM1 ASIG Vin VDD VDD pfet_05v0 L=0.50u W=8.0u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM2 ASIG Vin VSS VSS nfet_05v0 L=0.60u W=3.0u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+**** begin user architecture code
+
+.include /foss/designs/sscs-chipathon-2025/resources/Integration/Chipathon2025_pads/xschem/gf180mcu_fd_io__asig_5p0_extracted.spice
+XDUT DVSS DVDD VSS VDD PAD ASIG gf180mcu_fd_io__asig_5p0_extracted
+
+
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice diode_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice moscap_typical
+
+
+
+
+.control
+tran 1n 1u
+plot V(Vin)+12 V(ASIG)+6 V(PAD)
+.endc
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end
