@@ -42,11 +42,11 @@ This document outlines the official schedule for the SSCS Chipathon 2026 event.
 | Week 32 | Aug. 7 | **Layout Review** 🎓 | Sample layout review (Track leads) <br>• PEX and ESD (Juan) | [Watch](https://us06web.zoom.us/rec/share/qWLiUpnli6qmPoZfl0v00WrM5xPhG5q0mpdJCJBO_q74fJ8-iT_WZBLHjqV_52IE.C4dPJJCx3b5r1GJl) | [View](https://docs.google.com/presentation/d/e/2PACX-1vSgM4jEmZZVc_Ugfvpucf_9Q3ZjshnYkhOSNY2Ij0Yr92uAn24Pxv7kgcRpm1LDBw/pub) | closed |
 | | Aug. 10 | **Layout reviews due** |  |  |  |  |  |
 | Week 33 | Aug. 14 | **Layout Review (blocks)** 👥 | - | [Watch](https://us06web.zoom.us/rec/share/Mg_P-wWLp9x3jzMtugEtEymm8yqwpq3khrInKVpGH3qZBtqvr8nvAqHmXq2BdcNe.6VoYzwtYRhhxS9lD) | [View](https://docs.google.com/presentation/d/e/2PACX-1vRkx1NHWg3xox0615_BWJWWQnz0gzQK8vJi_DDQ9U0VyBzSXouGzxDDeQcUNQ80pA/pub) | closed |
-| Week 34 | Aug. 21 | **Layout Review (top level)** 👥 | - | [Watch](https://us06web.zoom.us/rec/share/prA6j1XtoWaUbdebyKJVQrpo_-G9a8KGzaKhOfdC9f7TQwvLnU6h3ltzaRtFK1d0.MsUONuAZgI77hC8B) | [View](https://docs.google.com/presentation/d/e/2PACX-1vQ9YaW02IyV1JNVb9v7MFsYQmWg_FRd4e3IGgzmIUCwyp-L7mW9mI_fVnLXYEX8yg/pub) | [Submit](https://forms.gle/oos7TDNTJgYom7BX9) |
+| Week 34 | Aug. 21 | **Layout Review (top level)** 👥 | - | [Watch](https://us06web.zoom.us/rec/share/prA6j1XtoWaUbdebyKJVQrpo_-G9a8KGzaKhOfdC9f7TQwvLnU6h3ltzaRtFK1d0.MsUONuAZgI77hC8B) | [View](https://docs.google.com/presentation/d/e/2PACX-1vQ9YaW02IyV1JNVb9v7MFsYQmWg_FRd4e3IGgzmIUCwyp-L7mW9mI_fVnLXYEX8yg/pub) | closed |
 |  | Aug. 28 | **DRC Dry-run GDS to Channel Partner**  | |  |  |  |
-| Week 35 | Aug. 28 | **Verification** 👥 | Secondary ESD (Juan/Luighi) |  |  |  |
-|  |     | **Final Chip Review** 👥 | - |  |  |  |
-|  | TBD | **Final Submission** | DRC-clean GDS to Channel Partner |  |  |  |  |
+| Week 35 | Aug. 28 | **Verification** 👥 |  | [Watch](https://us06web.zoom.us/rec/share/260XGdGee9oNCitJPMSFKW2mdAE98zccczq6CCA_UyR0U3-QeKueAsTWMglCCUSc.BSGEyKLsZm4Ad8__) | [View](https://docs.google.com/presentation/d/e/2PACX-1vTZgt2_tvTerI289m8oj7jyY9HwZH5GW5R0VJSLcobwlsElXh3c2BL-xDezW5ytFA/pub) | pending |
+| Week 36 | Sept. 4 | **Final Chip Review** 👥 | - |  |  |  |
+|  | Sept. 7 | **Final Submission** | DRC-clean GDS to Channel Partner |  |  |  |  |
 |  | TBD | **Post-mortem** 👥 | Project retrospective |  |  |  |
 
 ### Phase 5: Manufacturing and Testing
