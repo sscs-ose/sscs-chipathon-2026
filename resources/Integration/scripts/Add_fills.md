@@ -12,12 +12,12 @@ The scripts are intended to be run with klayout and are available in this fork:
 https://github.com/LuighiV/globalfoundries-pdk-libs-gf180mcu_fd_pr/tree/main
 
 To use it inside the chipathon docker image, we need to patch it by running the
-script [./patch-scripts.py](patch-scripts.py)
+script [patch-scripts.sh](./patch-scripts.sh)
 
 After the scripts are patched, we can call them to run in the specific gds.
 For example:
 
-```
+```bash
 \klayout -b -zz -r ${PDK_ROOT}/${PDK}/libs.tech/klayout/tech/scripts/fill_all.rb -rd input=SSCS_2026_01.gds -rd output=SSCS_2026_01_filled.gds -rd no_scribe_line=true
 ```
 
