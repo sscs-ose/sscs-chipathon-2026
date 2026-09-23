@@ -48,7 +48,7 @@ This document outlines the official schedule for the SSCS Chipathon 2026 event.
 | Week 36 | Sept. 4 | **Final Chip Review** 👥 | - | [Watch](https://us06web.zoom.us/rec/share/uQuA8bODtA9-zz8a45lJ1eF3F4uz8rRQwOXyykDOVxPAq29RCQ07kInlCpbSJeDi.ED5CrMFbnupkwDSf) | [View](https://docs.google.com/presentation/d/e/2PACX-1vTJ9drSaL95YhW0uky8v10P2_OcLJdsxjSX1gh_YYKM3nK795pji45JsPrPLWyfgw/pub) | none  |
 |  | Sept. 7 | ~~**Final Submission**~~ | ~~DRC-clean GDS to Channel Partner~~ |  |  |  |  |
 | Week 37 | Sept. 11 | **Status Update** 👥 | - | [Watch](https://us06web.zoom.us/rec/share/i_qTcDwJTFbZiRBP8syTBQAzP5raDYqWwh6EPuJq9brJVZodVskx72VTuUbSsb3M.wGMC3HGPtOc9Gg0G)  | [View](https://docs.google.com/presentation/d/e/2PACX-1vR3K3bU1Lhi9FxwVbCuP1CXq5s6sMsZVxmEI-SILHeMleXraj1jq7J9Sxnnp1siIg/pub) | none  |
-| Week 38 | Sept. 18 | **Checklists** 👥 | - |  |  | none  |
+| Week 38 | Sept. 18 | **Checklists** 👥 | - | [Watch](https://us06web.zoom.us/rec/share/3Ydzb96Ote2m4GcUszC2CTEmK9bbbz5HMH31r-Zfg6jD01K3Q0A7iUA67v8B03fK.YDj2SZTdugQLOhyL) | [Checklist](https://github.com/sscs-ose/sscs-chipathon-2026/blob/main/resources/gf180mcu_tapeout_checklist.md)  | none  |
 |  | TBD | **Post-mortem** 👥 | Project retrospective |  |  |  |
 
 ### Phase 5: Manufacturing and Testing
