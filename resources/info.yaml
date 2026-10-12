@@ -21,6 +21,7 @@ project:
   ws_def_ready: true            # data ready for def generation with wafer space pad frame
   drc_ready: true               # data ready for integration and DRC
   lvs_ready: true               # data ready for integrated LVS
+  export_control: "documents/Export_Control_GF_Rev8.2.docx"   # Required export control document
 
 # There are 7 i/o pin types and the associated connections from the user area to the i/o pad cell
 # all control signals must be connected
